@@ -1,10 +1,10 @@
-﻿<template>
+<template>
   <NavBar />
   <div class="min-h-screen bg-gradient-to-b from-pink-100 via-blue-100 to-yellow-100 py-[2.5rem] px-[1rem] overflow-hidden">
 
     <!-- BACK -->
  <div class="max-w-7xl mx-auto mb-[1rem] sm:mb-0">
-  <router-link
+  <NuxtLink
     to="/"
     class="inline-flex items-center justify-center
            w-[60%] ml-[5rem] sm:w-auto
@@ -16,7 +16,7 @@
            hover:scale-105 transition"
   >
     ⬅ Back Home
-  </router-link>
+  </NuxtLink>
 </div>
 
     <Loadder v-if="loading" />
@@ -328,18 +328,21 @@ import {
 import NotFound from "../components/NotFound.vue"
 import NavBar from "../components/NavBar.vue"
 
-import { useRoute } from "vue-router"
+import { navigateTo } from "#app"
 import Loadder from "../components/Loadder.vue"
 import MobileHint from "../components/ForMobile.vue"
 import api from '../services/Api.js';
 
-import router from "../router"
-
 import { globalStore } from "../pinaGlobal/global"
 const global = globalStore()
 
+const popSound = ref(null)
 
-const popSound = new Audio("../assets/sounds/pop.wav")
+onMounted(() => {
+  if (process.client) {
+    popSound.value = new Audio("../assets/sounds/pop.wav")
+  }
+})
 
 
 const checkSubscription = async () => {
@@ -419,9 +422,10 @@ try {
 
 
 function playPop() {
-  popSound.currentTime = 0
-  popSound.volume = 0.4
-  popSound.play()
+  if (!popSound.value) return
+  popSound.value.currentTime = 0
+  popSound.value.volume = 0.4
+  popSound.value.play()
 }
 
 
@@ -578,7 +582,7 @@ const playStoryFromPage = () => {
   else {
 
     alert("🌟 Subscribe to unlock all magical stories!")
-    router.push("/subscribe?isAgeGate=subs")
+    navigateTo("/subscribe?isAgeGate=subs")
   }
 
 
@@ -684,6 +688,7 @@ watch(
     currentPage.value = 0
     currentSentence.value = 0
     stopAudio()
+    loadStories()
   }
 )
 //Stop page scroll when fullscreen ON:

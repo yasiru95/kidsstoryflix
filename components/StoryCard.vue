@@ -24,7 +24,7 @@
     snap-center
   "
 >
-  <router-link
+  <NuxtLink
     :to="`/story/${story.id}`"
     class="block"
   >
@@ -60,8 +60,7 @@
 
     </div>
 
-  </router-link>
-</div>
+  </NuxtLink></div>
 
   
 </template>
