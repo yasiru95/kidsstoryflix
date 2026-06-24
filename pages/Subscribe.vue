@@ -112,11 +112,8 @@
 import { onMounted } from "vue"
 import { globalStore } from "../pinaGlobal/global"
 import api from "../services/Api.js"
-import { useRoute } from "vue-router"
-import router from "../router"
 import NavBar from "../components/NavBar.vue"
 
-const route = useRoute()
 
 const global = globalStore()
 

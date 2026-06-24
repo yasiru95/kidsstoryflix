@@ -194,11 +194,11 @@ const checkAnswer = () => {
 
     // 👉 NAVIGATE IF 
     if (isAgeGate === 'log') {
-      router.push("/parent-login")
+      router.push("/login")
     } else if (isAgeGate === 'reg') {
-      router.push("/parent-register")
+      router.push("/register")
     }else if(isAgeGate === 'subs') {
-      router.push("/parent-subscribe")
+      router.push("/Subscribe")
     }
   } else {
     error.value = true

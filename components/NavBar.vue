@@ -60,6 +60,7 @@
 
         <!-- NOT LOGGED IN -->
         <template v-else>
+          
 
           <NuxtLink
             to="/"
@@ -67,16 +68,17 @@
           >
             🏠 Home
           </NuxtLink>
+          
 
           <NuxtLink
-            :to="{ path: '/login', query: { isAgeGate: 'log' } }"
+            :to="{ path: '/Age-Gate', query: { isAgeGate: 'log' } }"
             class="px-4 py-2 rounded-full text-sm lg:text-base font-bold text-purple-700 hover:bg-pink-100 hover:text-pink-600 transition cursor-pointer"
           >
             Login
           </NuxtLink>
 
           <NuxtLink
-            :to="{ path: '/register', query: { isAgeGate: 'reg' } }"
+            :to="{ path: '/Age-Gate', query: { isAgeGate: 'reg' } }"
             class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-5 lg:px-6 py-2.5 rounded-full text-sm lg:text-base font-bold shadow-xl hover:scale-105 transition cursor-pointer"
           >
             Register
@@ -145,7 +147,7 @@
             </NuxtLink>
 
             <NuxtLink
-              :to="{ path: '/login', query: { isAgeGate: 'log' } }"
+              :to="{ path: '/Age-Gate', query: { isAgeGate: 'log' } }"
               class="rounded-2xl bg-pink-50 px-5 py-4 text-lg font-bold text-pink-600 hover:bg-pink-100 transition"
             >
               Login
@@ -153,7 +155,7 @@
 
             <NuxtLink
 
-              :to="{ path: '/register', query: { isAgeGate: 'reg' } }"
+              :to="{ path: '/Age-Gate', query: { isAgeGate: 'reg' } }"
               class="rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 px-5 py-4 text-lg font-bold text-white shadow-xl"
             >
               Register
