@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <NavBar />
   <div class="min-h-screen bg-gradient-to-b from-pink-100 via-blue-100 to-yellow-100 py-[2.5rem] px-[1rem] overflow-hidden">
 
@@ -46,6 +46,8 @@
   >
     ⛶ Full Screen
   </button>
+
+  
 
   
 
@@ -582,7 +584,8 @@ const playStoryFromPage = () => {
   else {
 
     alert("🌟 Subscribe to unlock all magical stories!")
-    navigateTo("/subscribe?isAgeGate=subs")
+    navigateTo("/Subscribe?isAgeGate=subs")
+                
   }
 
 

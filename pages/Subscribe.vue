@@ -123,83 +123,36 @@ const global = globalStore()
 
 const payment = async () => {
 
-  if(global.isLoggedIn==true){
-    try {
-    const response = await api.post(
-  '/payments',
-  {
-    user_id: global.userLogin.id,
-    amount: 249,
-    payment_id: "pay_1234567890",
-    payment_method: "google_pay",
-    transaction_id: "txn_1234567890",
-    currency: "USD",
-    is_subscription: true
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${global.userLogin.token}`
+if(global.isLoggedIn==true){
+
+try {
+  const response = await api.post(
+    '/checkout',
+    {
+      user_id: global.userLogin.id
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${global.userLogin.token}`,
+        Accept: 'application/json'
+      }
     }
+  )
+
+
+  // Laravel returns: { url: "https://checkout.stripe.com/..." }
+  if (response.data.url) {
+    window.open(response.data.url, '_blank')
   }
-)
-if (response.data.success===true) {
-  alert("Payment successful! Thank you for subscribing.")
-  global.isKidSubscribed = true
-  router.push('/')
-} else {
-  alert("Payment failed. Please try again.")
-}
-
-
-
-
-
 } catch (error) {
-  alert("Payment failed. Please try again.")
+  console.error('Checkout error:', error)
 
-  // Laravel responded with an error
   if (error.response) {
-
-    console.error('Status:', error.response.status)
-    console.error('Backend Error:', error.response.data)
-
-    // Validation errors (422)
-    if (error.response.status === 422) {
-      console.log(error.response.data.errors)
-    }
-
-    // Unauthorized (401)
-    else if (error.response.status === 401) {
-      alert(error.response.data.message || 'Unauthorized')
-    }
-
-    // Forbidden (403)
-    else if (error.response.status === 403) {
-      alert(error.response.data.message || 'Access denied')
-    }
-
-    // Not found (404)
-    else if (error.response.status === 404) {
-      alert(error.response.data.message || 'Resource not found')
-    }
-
-    // Server error (500)
-    else if (error.response.status === 500) {
-      alert(error.response.data.message || 'Server error')
-    }
-
-  }
-  // No response from server
-  else if (error.request) {
-    console.error('No response from server')
-    alert('Cannot connect to server')
-  }
-  // Other error
-  else {
-    console.error(error.message)
-    alert(error.message)
+    console.error(error.response.data)
   }
 }
+  
+ 
   }else{
     alert('Registration required to subscribe. Redirecting to registration page.')
     router.push("/register?isAgeGate=reg")
