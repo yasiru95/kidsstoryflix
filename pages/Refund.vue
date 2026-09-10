@@ -13,7 +13,7 @@
         </h1>
 
         <p class="text-gray-600 mt-2 font-semibold">
-          Monthly subscription made simple 🌈
+          One-Time subscription made simple 🌈
         </p>
       </div>
 
@@ -21,20 +21,19 @@
       <div class="mt-8 space-y-6 text-gray-700 font-medium leading-7">
 
         <div>
-          <h2 class="text-xl font-bold text-pink-600">📅 Monthly Subscription</h2>
+          <h2 class="text-xl font-bold text-pink-600">📅 One-Time Subscription</h2>
           <p>
-            Kids Story World offers a simple monthly subscription plan.
-            You are charged once every month until you cancel.
+            KidsStoryFlix offers a simple one-time subscription plan.
           </p>
         </div>
 
-        <div>
+        <!-- <div>
           <h2 class="text-xl font-bold text-pink-600">❌ Cancel Anytime</h2>
           <p>
             You can cancel your subscription at any time.
             After cancellation, you will still have access until the end of your paid period.
           </p>
-        </div>
+        </div> -->
 
         <div>
           <h2 class="text-xl font-bold text-pink-600">💰 Refund Policy</h2>
@@ -54,7 +53,7 @@
         <div>
           <h2 class="text-xl font-bold text-pink-600">📞 Support</h2>
           <p>
-            If you need help with billing or cancellation, our support team is always ready to help.
+            If you need help with billing our support team is always ready to help.
           </p>
         </div>
 
@@ -62,12 +61,14 @@
 
       <!-- FOOTER -->
       <div class="mt-10 text-center text-gray-500 text-sm">
-        🌟 Kids Story World - Fair & Transparent Subscription 🌟
+        🌟 KidsStoryFlix - Fair & Transparent Subscription 🌟
       </div>
 
     </div>
   </div>
+      <FooterPart />
 </template>
       <script setup>
       import NavBar from "../components/NavBar.vue"
+      import FooterPart from "../components/FooterPart.vue"
       </script>

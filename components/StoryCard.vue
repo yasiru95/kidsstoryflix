@@ -1,3 +1,4 @@
+```vue
 <template>
   <!-- <div class="min-w-[320px] bg-white rounded-[35px] overflow-hidden shadow-2xl hover:scale-105 transition">
     <img :src="story.image" class="w-full h-72 object-cover" />
@@ -14,60 +15,54 @@
   </div> -->
 
   <div
-  class="
-    group
-    relative
-    w-[180px]
-    sm:w-[200px]
-    md:w-[220px]
-    shrink-0
-    snap-center
-  "
->
-  <NuxtLink
-    :to="`/story/${story.id}`"
-    class="block"
+    class="
+      group
+      relative
+      w-[180px]
+      sm:w-[200px]
+      md:w-[220px]
+      shrink-0
+      snap-center
+    "
   >
+   <NuxtLink :to="`/story/${story.slug}`" class="block" :aria-label="`Read ${story.title}`" >
 
-    <!-- STORY CARD -->
-    <div
-      class="
-        overflow-hidden
-        rounded-2xl
-
-        bg-white
-
-
-        transition-all
-        duration-300
-
-      "
-    >
-
-      <!-- IMAGE -->
-      <img
-        :src="story.image"
-        alt="story"
+      <!-- STORY CARD -->
+      <div
         class="
-          h-64
-          w-full
-          object-cover
+          overflow-hidden
+          rounded-2xl
 
-          sm:h-72
-          md:h-80
+          bg-white
+
+
+          transition-all
+          duration-300
+
         "
-      />
+      >
 
-    </div>
+        <!-- IMAGE -->
+        <img
+        :src="story.image" :alt="`${story.title} - children's story`"
+          class="
+            h-64
+            w-full
+            object-cover
 
-  </NuxtLink></div>
+            sm:h-72
+            md:h-80
+          "
+          loading="lazy" decoding="async"
+        />
 
-  
+      </div>
+
+    </NuxtLink>
+  </div>
 </template>
 
 <script setup>
-import { Story } from '../models/Story';
-
 
 const props = defineProps({
   story: {
@@ -75,4 +70,6 @@ const props = defineProps({
     required: true,
   },
 })
+
 </script>
+```

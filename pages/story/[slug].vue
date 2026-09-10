@@ -21,8 +21,10 @@
 
     <Loadder v-if="loading" />
 
+    
+
     <!-- STORY -->
- <div v-if="story" class="max-w-6xl mx-auto">
+ <div v-else-if="story" class="max-w-6xl mx-auto">
 
   <MobileHint />
 
@@ -85,7 +87,8 @@
       :key="currentPage"
       :src="story.pages[currentPage].img"
       class="absolute inset-0 w-full h-full object-cover"
-      alt="Story Image"
+      :alt="`${story.title} - Page ${currentPage + 1}`"
+      loading="lazy" decoding="async"
     />
   </transition>
 
@@ -187,7 +190,7 @@
             activeWordIndex === index
              ? 'text-highlight scale-105 shadow-md'
                   : 'text-outline',
-              // ? 'text-pink-600 scale-110'
+              // ? 'text-white scale-110'
               // : 'text-gray-800'
           ]"
         >
@@ -314,7 +317,7 @@
     </div>
 
     <!-- NOT FOUND -->
-    <NotFound v-else />
+  <NotFound v-else-if="storyError || !story" />
 
   </div>
 </template>
@@ -335,10 +338,222 @@ import Loadder from "../../components/Loadder.vue"
 import MobileHint from "../../components/ForMobile.vue"
 import api from '../../services/Api.js';
 
-import { globalStore } from "../../pinaGlobal/global"
+import { globalStore } from "../../pinaGlobal/global.js"
+
+
+
+
+const route = useRoute()
+
 const global = globalStore()
 
 const popSound = ref(null)
+
+
+/*
+|--------------------------------------------------------------------------
+| WEBSITE URL
+|--------------------------------------------------------------------------
+*/
+
+const siteUrl = "https://kidsstoryflix.co.uk"
+console.log('route.params.slug:', route.params.slug) // Log the slug for debugging
+// const loading = ref(true)
+
+const {
+  data: story,
+  pending: loading,
+  error: storyError
+} = await useAsyncData(
+  `story-${route.params.slug}`,
+  async () => {
+    const response = await api.get(
+      '/stories/name/' + route.params.slug
+    )
+
+    return response.data.data
+  
+  },
+  {
+    default: () => null,
+    watch: [() => route.params.slug]
+  }
+)
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| 404
+|--------------------------------------------------------------------------
+|
+| If you want Nuxt to return a real HTTP 404 for Google,
+| you can enable this.
+|
+| The current NotFound component is kept below so your
+| existing UI behaviour remains.
+|
+*/
+
+if (storyError.value) {
+  console.log("Story loading error:", storyError.value)
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| SEO
+|--------------------------------------------------------------------------
+*/
+
+const pageTitle = computed(() => {
+
+  if (!story.value) {
+    return "KidsStoryFlix | Children's Stories"
+  }
+
+  return `${story.value.title} | KidsStoryFlix`
+
+})
+
+
+const pageDescription = computed(() => {
+
+  if (!story.value) {
+    return "Read fun children's stories, bedtime stories and fairy tales for kids on KidsStoryFlix."
+  }
+
+  return (
+    story.value.description ||
+    `Read ${story.value.title}, a fun children's story on KidsStoryFlix.`
+  )
+
+})
+
+
+const pageUrl = computed(() => {
+
+  return `${siteUrl}/story/${route.params.slug}`
+
+})
+
+
+const pageImage = computed(() => {
+
+  if (story.value?.image) {
+    return story.value.image
+  }
+
+  if (story.value?.pages?.[0]?.img) {
+    return story.value.pages[0].img
+  }
+
+  return `${siteUrl}/images/kidsstoryflix-og.jpg`
+
+})
+
+
+/*
+|--------------------------------------------------------------------------
+| SEO META
+|--------------------------------------------------------------------------
+*/
+
+useSeoMeta({
+
+  title: () => pageTitle.value,
+
+  description: () => pageDescription.value,
+
+  robots: "index, follow",
+
+  ogTitle: () => pageTitle.value,
+
+  ogDescription: () => pageDescription.value,
+
+  ogType: "article",
+
+  ogUrl: () => pageUrl.value,
+
+  ogImage: () => pageImage.value,
+
+  twitterCard: "summary_large_image",
+
+  twitterTitle: () => pageTitle.value,
+
+  twitterDescription: () => pageDescription.value,
+
+  twitterImage: () => pageImage.value
+
+})
+
+
+/*
+|--------------------------------------------------------------------------
+| CANONICAL + JSON-LD
+|--------------------------------------------------------------------------
+*/
+
+useHead(() => ({
+
+  link: [
+    {
+      rel: "canonical",
+      href: pageUrl.value
+    }
+  ],
+
+  script: story.value
+    ? [
+        {
+          type: "application/ld+json",
+
+          children: JSON.stringify({
+
+            "@context": "https://schema.org",
+
+            "@type": "Article",
+
+            headline: story.value.title,
+
+            description:
+              story.value.description || "",
+
+            image:
+              story.value.image
+                ? [story.value.image]
+                : story.value.pages?.[0]?.img
+                  ? [story.value.pages[0].img]
+                  : [],
+
+            author: {
+              "@type": "Organization",
+              name: "KidsStoryFlix"
+            },
+
+            publisher: {
+              "@type": "Organization",
+              name: "KidsStoryFlix",
+              url: siteUrl
+            },
+
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": pageUrl.value
+            }
+
+          })
+
+        }
+      ]
+    : []
+
+}))
+
+
 
 onMounted(() => {
   if (process.client) {
@@ -348,17 +563,17 @@ onMounted(() => {
 
 
 const checkSubscription = async () => {
-  console.log("Checking subscription for user ID:", global.userLogin.id)
+  console.log("Checking subscription for user ID:", global.userLogin?.id)
 
 
 try {
 
   const response = await api.get('/subscription', {
     headers: {
-      Authorization: `Bearer ${global.userLogin.token}`
+      Authorization: `Bearer ${global.userLogin?.token}`
     },
     params: {
-      user_id: global.userLogin.id,
+      user_id: global.userLogin?.id,
     }
   })
 
@@ -474,7 +689,7 @@ const handleFullScreenChange = () => {
 
 onMounted(() => {
   isIOS.value = /iPhone|iPad|iPod/i.test(navigator.userAgent)
-  loadStories()
+  // loadStories()
   if (global.userLogin?.token) {
     console.log("User logged in, checking subscription...") 
     checkSubscription()
@@ -503,7 +718,7 @@ const heroClass = computed(() =>
     : "relative w-full h-[420px] md:h-[520px] rounded-[40px] border-8 border-white"
 )
 
-const route = useRoute()
+//const route = useRoute()
 
 const currentPage = ref(0)
 const currentSentence = ref(0)
@@ -513,8 +728,7 @@ let animationFrame = null
 let currentAudio = null
 
 
-const story= ref(null)
-const loading = ref(true)
+// const story= ref(null)
 
 const loadStories = async () => {
   try {
@@ -525,7 +739,7 @@ const loadStories = async () => {
 
     // fake API call
     // const response = await fetch("../storyPage.json")
-    const response = await api.get('/stories/' + route.params.id);
+    const response = await api.get('/stories/name/' + route.params.id);
     console.log("Loaded story back:", response.data['data'])
 
     // await new Promise((r) => setTimeout(r, 1000))
@@ -604,18 +818,21 @@ const playAudio = (audioFile) => {
   audio.play()
 
   const sync = () => {
-    const time = audio.currentTime*1000
-    const sentence = page.sentences[currentSentence.value]
+    const time = audio.currentTime * 1000
 
-    if (!sentence) return
-
-    // sentence switch
+    // determine which sentence we're in based on absolute word end times
     for (let i = 0; i < page.sentences.length; i++) {
       const last = page.sentences[i].words.at(-1)
       if (time <= last.end) {
         currentSentence.value = i
         break
       }
+    }
+
+    const sentence = page.sentences[currentSentence.value]
+    if (!sentence) {
+      animationFrame = requestAnimationFrame(sync)
+      return
     }
 
     const words = sentence.words
@@ -686,7 +903,7 @@ const goToPage = (i) => {
 
 /* RESET */
 watch(
-  () => route.params.id,
+  () => route.params.slug,
   () => {
     currentPage.value = 0
     currentSentence.value = 0

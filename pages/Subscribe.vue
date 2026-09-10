@@ -126,11 +126,11 @@ try {
   const response = await api.post(
     '/checkout',
     {
-      user_id: global.userLogin.id
+      user_id: global.userLogin?.id
     },
     {
       headers: {
-        Authorization: `Bearer ${global.userLogin.token}`,
+        Authorization: `Bearer ${global.userLogin?.token}`,
         Accept: 'application/json'
       }
     }

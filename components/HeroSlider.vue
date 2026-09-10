@@ -45,7 +45,7 @@
           </p>
 
           <!-- BUTTON -->
-          <router-link
+          <!-- <router-link
             :to="`/story/${slide.id}`"
             class="mt-5 sm:mt-8 md:mt-10 inline-block
                    bg-gradient-to-r from-pink-500 to-purple-500
@@ -56,7 +56,7 @@
                    md:px-10 md:py-5 md:text-2xl"
           >
             📖 Read Story
-          </router-link>
+          </router-link> -->
         </div>
       </div>
     </div>

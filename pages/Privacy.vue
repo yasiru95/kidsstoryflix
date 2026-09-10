@@ -19,7 +19,7 @@
       <div class="mt-8 space-y-6 text-gray-700 font-medium leading-7">
 
         <p>
-          Welcome to Kids Story World. We care about your privacy and your child's safety.
+          Welcome to KidsStoryFlix. We care about your privacy and your child's safety.
           This app is designed to be safe and friendly for kids.
         </p>
 
@@ -62,13 +62,15 @@
       </div>
 
       <div class="mt-10 text-center text-gray-500 text-sm">
-        🌟 Kids Story World - Safe Learning for Children 🌟
+        🌟 KidsStoryFlix - Safe Learning for Children 🌟
       </div>
 
     </div>
 
   </div>
+      <FooterPart />
 </template>
 <script setup>
-import NavBar from "../components/NavBar.vue"
+import NavBar from "../components/NavBar.vue"   
+import FooterPart from "../components/FooterPart.vue"
 </script>

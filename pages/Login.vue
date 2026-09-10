@@ -1,11 +1,15 @@
 <template>
+  
   <div class="min-h-screen flex items-center justify-center bg-gradient-to-b from-pink-100 via-blue-100 to-yellow-100 p-4">
     <div class="w-full max-w-md bg-white rounded-[30px] shadow-2xl p-8">
+
+      
       <div class="text-center">
         <div class="text-6xl">📚</div>
         <h1 class="text-4xl font-extrabold text-purple-700 mt-4">Login</h1>
         <p class="text-gray-600 mt-2">Enter your magical account ✨</p>
       </div>
+      
 
       <div
         v-if="successMessage"

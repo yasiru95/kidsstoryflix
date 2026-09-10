@@ -475,7 +475,7 @@ const submitForm = async () => {
     form.password_confirmation = "";
     form.terms = false;
 
-    router.push('/parent-login');
+    router.push('/login?isAgeGate=log');
 
   } catch (error) {
     console.log(error);

@@ -9,7 +9,7 @@
         <!-- BRAND -->
         <div class="text-center sm:text-left">
           <h2 class="text-2xl sm:text-3xl font-extrabold text-purple-600">
-            📚 Kids Story Land
+            📚 KidsStoryFlix
           </h2>
 
           <p class="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed">
@@ -31,16 +31,16 @@
             </li>
 
             <li>
-              <a href="/books" class="hover:text-purple-600 transition">
-                Books
+              <a href="/all-stories" class="hover:text-purple-600 transition">
+                All-Stories
               </a>
             </li>
 
-            <li>
+            <!-- <li>
               <a href="/categories" class="hover:text-purple-600 transition">
                 Categories
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
 
@@ -51,9 +51,9 @@
           </h3>
 
           <div class="text-sm sm:text-base text-gray-600 space-y-2">
-            <p>📧 support@kidsstory.com</p>
-            <p>📱 +44 7123 456 789</p>
-            <p>📍 UK Support Center</p>
+            <p>📧 contactkidsstoryflix@gmail.com</p>
+            <!-- <p>📱 +44 7123 456 789</p>
+            <p>📍 UK Support Center</p> -->
           </div>
         </div>
 
@@ -66,7 +66,7 @@
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
 
         <p class="text-xs sm:text-sm text-gray-500">
-          © 2026 Kids Story Land. All rights reserved.
+          © 2026 KidsStoryFlix. All rights reserved.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base">
@@ -84,9 +84,9 @@
 
           
 
-          <a href="/contact" class="text-gray-600 hover:text-purple-600 transition">
+          <!-- <a href="/contact" class="text-gray-600 hover:text-purple-600 transition">
             Contact
-          </a>
+          </a> -->
         </div>
 
       </div>

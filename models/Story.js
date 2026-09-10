@@ -2,6 +2,7 @@ export class Story {
   constructor(data) {
     this.id = data.id
     this.title = data.title
+    this.slug = data.slug
     this.description = data.description
     this.image = data.image // 👈 API field name
   }

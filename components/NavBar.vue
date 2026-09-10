@@ -21,7 +21,7 @@
           <h1
             class="text-sm sm:text-lg md:text-xl font-extrabold text-purple-700"
           >
-            Kids Story
+            KidsStoryFlix
           </h1>
 
           <p
@@ -36,6 +36,13 @@
       <nav
         class="hidden md:flex items-center gap-3 lg:gap-5"
       >
+
+        <NuxtLink
+        to="/"
+        class="px-4 py-2 rounded-full text-sm lg:text-base font-bold text-purple-700 hover:bg-pink-100 hover:text-pink-600 transition cursor-pointer"
+        >
+        🏠 Home
+        </NuxtLink>
 
         <!-- LOGGED IN -->
         <template v-if="global.isLoggedIn">
@@ -62,12 +69,7 @@
         <template v-else>
           
 
-          <NuxtLink
-            to="/"
-            class="px-4 py-2 rounded-full text-sm lg:text-base font-bold text-purple-700 hover:bg-pink-100 hover:text-pink-600 transition cursor-pointer"
-          >
-            🏠 Home
-          </NuxtLink>
+   
           
 
           <NuxtLink
@@ -115,6 +117,13 @@
 
         <div class="flex flex-col gap-3">
 
+              <NuxtLink
+              to="/"
+              class="rounded-2xl bg-pink-50 px-5 py-4 text-lg font-bold text-purple-700 hover:bg-pink-100 transition"
+            >
+              🏠 Home
+            </NuxtLink>
+
           <!-- LOGGED IN -->
           <template v-if="global.isLoggedIn">
 
@@ -139,12 +148,7 @@
           <!-- NOT LOGGED IN -->
           <template v-else>
 
-            <NuxtLink
-              to="/"
-              class="rounded-2xl bg-pink-50 px-5 py-4 text-lg font-bold text-purple-700 hover:bg-pink-100 transition"
-            >
-              🏠 Home
-            </NuxtLink>
+        
 
             <NuxtLink
               :to="{ path: '/Age-Gate', query: { isAgeGate: 'log' } }"

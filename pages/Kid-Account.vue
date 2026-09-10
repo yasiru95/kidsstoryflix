@@ -17,7 +17,7 @@
 
         <div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-purple-700">
-          {{ global.userLogin.name }}
+          {{ global.userLogin?.name }}
           </h2>
 
           <p class="text-gray-500 font-semibold">

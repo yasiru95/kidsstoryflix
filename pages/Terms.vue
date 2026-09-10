@@ -21,7 +21,7 @@
         <div>
           <h2 class="text-xl font-bold text-blue-700">📌 Acceptance</h2>
           <p>
-            By using Kids Story World, you agree to follow these rules.
+            By using KidsStoryFlix, you agree to follow these rules.
           </p>
         </div>
 
@@ -63,13 +63,15 @@
       </div>
 
       <div class="mt-10 text-center text-gray-500 text-sm">
-        🌟 Kids Story World - Learn & Grow Safely 🌟
+        🌟 KidsStoryFlix - Learn & Grow Safely 🌟
       </div>
 
     </div>
 
   </div>
+      <FooterPart />
 </template>
 <script setup>
 import NavBar from "../components/NavBar.vue"
+import FooterPart from "../components/FooterPart.vue"
 </script>

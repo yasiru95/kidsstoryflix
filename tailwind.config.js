@@ -1,17 +1,15 @@
 export default {
   content: [
-    "./app.vue",
-    "./components/**/*.{vue,js,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./composables/**/*.{js,ts}",
-    "./plugins/**/*.{js,ts}"
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
 
   theme: {
     extend: {
-      /* 🌈 KIDS VIBRANT PALETTE */
+
       colors: {
+
+        /* 🌈 KIDS VIBRANT PALETTE */
         candy: "#ff4fa0",
         grape: "#8b5cf6",
         sky: "#38bdf8",
@@ -58,6 +56,7 @@ export default {
           "50%": { transform: "rotate(3deg)" },
         },
       },
+
     },
   },
 
