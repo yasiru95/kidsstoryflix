@@ -1,10 +1,11 @@
 <template>
+     <!-- NAVBAR -->
+    <NavBar />
+
   <div
     class="min-h-screen overflow-hidden bg-gradient-to-b from-pink-100 via-blue-100 to-yellow-100 font-['Fredoka']"
   >
-    <!-- NAVBAR -->
-    <NavBar />
-
+ 
     <!-- HERO -->
     <section class="w-full overflow-hidden">
       <HeroSlider
