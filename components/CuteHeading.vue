@@ -10,18 +10,20 @@
         rounded-full
         px-6 sm:px-8
         py-3 sm:py-4
-        text-3xl sm:text-5xl
+        text-2xl sm:text-4xl md:text-5xl
         font-black
-        font-[Baloo_2]
+        font-['Baloo_2']
         text-purple-700
         bg-gradient-to-br
         from-white
         to-violet-50
-        shadow-[0_8px_18px_rgba(109,40,217,0.15)]
-        hover:shadow-[0_16px_30px_rgba(109,40,217,0.25)]
+        border-2 border-white
+        shadow-[0_8px_18px_rgba(109,40,217,0.12)]
+        hover:shadow-[0_16px_30px_rgba(109,40,217,0.22)]
+        hover:scale-105
+        active:scale-95
         transition-all
         duration-300
-        animate-bounce
       "
       style="
         text-shadow:
@@ -45,12 +47,13 @@ defineProps({
   }
 })
 
-
 function playPop() {
-  const popSound = new Audio("../assets/sounds/pop.wav")
-
-  popSound.currentTime = 0
-  popSound.volume = 0.4
-  popSound.play()
+  if (!import.meta.client) return
+  try {
+    const popSound = new Audio("/assets/sounds/pop.wav")
+    popSound.currentTime = 0
+    popSound.volume = 0.3
+    popSound.play().catch(() => {})
+  } catch (err) {}
 }
 </script>

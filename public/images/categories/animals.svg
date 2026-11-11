@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- MANE GRADIENT -->
+    <linearGradient id="lion-mane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF9E2C"/>
+      <stop offset="100%" stop-color="#E25C05"/>
+    </linearGradient>
+
+    <!-- FACE GRADIENT -->
+    <linearGradient id="lion-face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE07D"/>
+      <stop offset="100%" stop-color="#FFC043"/>
+    </linearGradient>
+
+    <!-- EAR INNER -->
+    <linearGradient id="ear-pink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA4B8"/>
+      <stop offset="100%" stop-color="#FF6B8B"/>
+    </linearGradient>
+
+    <!-- CHEEK GRADIENT -->
+    <radialGradient id="blush-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6584" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF6584" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="lion-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#C2410C" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#lion-shadow)">
+    <!-- ROUND CLOUD MANE PETALS (FLUFFY LION MANE) -->
+    <g fill="url(#lion-mane)">
+      <!-- 12 rounded petals forming the puffy mane circle -->
+      <circle cx="60" cy="22" r="14"/>
+      <circle cx="80" cy="27" r="14"/>
+      <circle cx="96" cy="42" r="14"/>
+      <circle cx="99" cy="64" r="14"/>
+      <circle cx="88" cy="85" r="14"/>
+      <circle cx="70" cy="98" r="14"/>
+      <circle cx="50" cy="98" r="14"/>
+      <circle cx="32" cy="85" r="14"/>
+      <circle cx="21" cy="64" r="14"/>
+      <circle cx="24" cy="42" r="14"/>
+      <circle cx="40" cy="27" r="14"/>
+      <!-- Mane base filler -->
+      <circle cx="60" cy="60" r="42"/>
+    </g>
+
+    <!-- ROUND EARS -->
+    <g>
+      <!-- Left Ear -->
+      <circle cx="35" cy="30" r="11" fill="url(#lion-face)"/>
+      <circle cx="35" cy="30" r="6.5" fill="url(#ear-pink)"/>
+      <!-- Right Ear -->
+      <circle cx="85" cy="30" r="11" fill="url(#lion-face)"/>
+      <circle cx="85" cy="30" r="6.5" fill="url(#ear-pink)"/>
+    </g>
+
+    <!-- LION HEAD / FACE -->
+    <ellipse cx="60" cy="62" rx="34" ry="31" fill="url(#lion-face)"/>
+
+    <!-- FOREHEAD HIGHLIGHT -->
+    <ellipse cx="60" cy="45" rx="14" ry="6" fill="#FFF5C2" opacity="0.6"/>
+
+    <!-- MUZZLE / SNOUT (WHITE FLUFFY CHEEKS) -->
+    <ellipse cx="53" cy="73" rx="10" ry="7.5" fill="#FFFBEB"/>
+    <ellipse cx="67" cy="73" rx="10" ry="7.5" fill="#FFFBEB"/>
+
+    <!-- BIG KAWAII EYES -->
+    <g>
+      <!-- Left Eye -->
+      <ellipse cx="44" cy="57" rx="5.5" ry="7" fill="#2E1065"/>
+      <!-- Left Catchlight Main -->
+      <circle cx="42.5" cy="54.5" r="2.5" fill="#FFFFFF"/>
+      <circle cx="46" cy="59" r="1.2" fill="#FFFFFF"/>
+      
+      <!-- Right Eye -->
+      <ellipse cx="76" cy="57" rx="5.5" ry="7" fill="#2E1065"/>
+      <!-- Right Catchlight Main -->
+      <circle cx="74.5" cy="54.5" r="2.5" fill="#FFFFFF"/>
+      <circle cx="78" cy="59" r="1.2" fill="#FFFFFF"/>
+    </g>
+
+    <!-- ROSY BLUSH CHEEKS -->
+    <circle cx="35" cy="67" r="6" fill="url(#blush-grad)"/>
+    <circle cx="85" cy="67" r="6" fill="url(#blush-grad)"/>
+
+    <!-- BUTTON NOSE (CUTE HEART) -->
+    <path d="M60 69 C58 66 54 66 54 69 C54 72 60 75 60 75 C60 75 66 72 66 69 C66 66 62 66 60 69 Z" fill="#6B21A8"/>
+
+    <!-- HAPPY CAT MOUTH (ω) -->
+    <path d="M54 74 Q60 77 60 74 Q60 77 66 74" stroke="#6B21A8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    
+    <!-- CUTE TINY TONGUE -->
+    <path d="M58 75 Q60 79 62 75 Z" fill="#FF6584"/>
+
+    <!-- TINY WHISKER DOTS -->
+    <circle cx="51" cy="72" r="1" fill="#D97706"/>
+    <circle cx="48" cy="73.5" r="1" fill="#D97706"/>
+    <circle cx="69" cy="72" r="1" fill="#D97706"/>
+    <circle cx="72" cy="73.5" r="1" fill="#D97706"/>
+
+    <!-- LITTLE SPARKLE ACCENT -->
+    <path d="M96 22 L97.5 17 L99 22 L104 23.5 L99 25 L97.5 30 L96 25 L91 23.5 Z" fill="#FFD000"/>
+  </g>
+</svg>

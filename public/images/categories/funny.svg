@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- BALLOON GRADIENTS -->
+    <radialGradient id="balloon-pink" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FF9BBB"/>
+      <stop offset="55%" stop-color="#FF4081"/>
+      <stop offset="100%" stop-color="#C2185B"/>
+    </radialGradient>
+
+    <radialGradient id="balloon-yellow" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFF994"/>
+      <stop offset="55%" stop-color="#FFCA28"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </radialGradient>
+
+    <radialGradient id="balloon-cyan" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="55%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </radialGradient>
+
+    <filter id="balloon-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#BE185D" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#balloon-shadow)">
+    <!-- BACK BALLOON LEFT (CYAN/GREEN) -->
+    <g transform="translate(18, 16)">
+      <!-- Balloon shape -->
+      <path d="M18 40 C6 38 0 28 0 18 C0 8 8 0 18 0 C28 0 36 8 36 18 C36 28 30 38 18 40 Z" fill="url(#balloon-cyan)"/>
+      <!-- Knot -->
+      <path d="M16 39 L20 39 L22 43 L14 43 Z" fill="#047857"/>
+      <!-- String -->
+      <path d="M18 43 Q14 56 22 68 Q28 78 38 82" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <!-- Glare highlight -->
+      <ellipse cx="10" cy="12" rx="4" ry="7" transform="rotate(-20 10 12)" fill="#FFFFFF" opacity="0.6"/>
+    </g>
+
+    <!-- BACK BALLOON RIGHT (YELLOW/SUNSHINE) -->
+    <g transform="translate(64, 18)">
+      <!-- Balloon shape -->
+      <path d="M18 40 C6 38 0 28 0 18 C0 8 8 0 18 0 C28 0 36 8 36 18 C36 28 30 38 18 40 Z" fill="url(#balloon-yellow)"/>
+      <!-- Knot -->
+      <path d="M16 39 L20 39 L22 43 L14 43 Z" fill="#FF8F00"/>
+      <!-- String -->
+      <path d="M18 43 Q22 56 16 68 Q10 78 0 82" stroke="#FCD34D" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <!-- Glare highlight -->
+      <ellipse cx="10" cy="12" rx="4" ry="7" transform="rotate(-20 10 12)" fill="#FFFFFF" opacity="0.65"/>
+    </g>
+
+    <!-- CENTER MAIN BALLOON (CANDY PINK WITH SILLY / LAUGHING FACE) -->
+    <g transform="translate(36, 12)">
+      <!-- Balloon shape -->
+      <path d="M24 54 C8 52 0 38 0 24 C0 10 11 0 24 0 C37 0 48 10 48 24 C48 38 40 52 24 54 Z" fill="url(#balloon-pink)"/>
+      <!-- Knot -->
+      <path d="M21 53 L27 53 L29 59 L19 59 Z" fill="#9F1239"/>
+      <!-- Wavy String -->
+      <path d="M24 59 Q18 72 28 84 Q34 94 24 104" stroke="#FB7185" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+      <!-- GLOSSY SPECULAR HIGHLIGHT PILL -->
+      <ellipse cx="12" cy="15" rx="5" ry="9" transform="rotate(-25 12 15)" fill="#FFFFFF" opacity="0.75"/>
+      <circle cx="10" cy="28" r="2.5" fill="#FFFFFF" opacity="0.6"/>
+
+      <!-- SILLY GOOFY FACE -->
+      <!-- Left Eye: Playful Wink (>) -->
+      <path d="M13 22 L20 26 L13 29" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <!-- Right Eye: Big Happy Open Sparkling Eye -->
+      <circle cx="33" cy="25" r="4.5" fill="#FFFFFF"/>
+      <circle cx="34" cy="24" r="3" fill="#881337"/>
+      <circle cx="35" cy="23" r="1.5" fill="#FFFFFF"/>
+
+      <!-- Rosy Cheeks -->
+      <circle cx="11" cy="33" r="3.5" fill="#FFE4E6" opacity="0.8"/>
+      <circle cx="37" cy="33" r="3.5" fill="#FFE4E6" opacity="0.8"/>
+
+      <!-- Big Laughing Smile with sticking out tongue! -->
+      <!-- Mouth cavity -->
+      <path d="M19 33 Q24 43 29 33 Z" fill="#881337"/>
+      <!-- Cute Tongue poking out -->
+      <path d="M22 36 Q25 44 28 36 Z" fill="#FF85A2"/>
+      <path d="M25 36 L25 40" stroke="#E11D48" stroke-width="1"/>
+    </g>
+
+    <!-- CELEBRATION CONFETTI & FUN SPARKS -->
+    <g>
+      <!-- Confetti Ribbons -->
+      <path d="M14 68 Q18 72 16 78 Q13 83 18 87" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M102 62 Q96 68 100 74 Q103 80 97 86" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+      <!-- Colorful Confetti Pieces -->
+      <rect x="22" y="8" width="4" height="4" rx="1" transform="rotate(25 22 8)" fill="#F59E0B"/>
+      <rect x="94" y="14" width="4" height="4" rx="1" transform="rotate(-35 94 14)" fill="#3B82F6"/>
+      <rect x="88" y="76" width="3.5" height="3.5" rx="1" transform="rotate(15 88 76)" fill="#10B981"/>
+      <circle cx="28" cy="88" r="2" fill="#F43F5E"/>
+      <circle cx="98" cy="42" r="2.5" fill="#FBBF24"/>
+      <!-- Sparkle -->
+      <path d="M10 38 L11.5 33 L13 38 L18 39.5 L13 41 L11.5 46 L10 41 L5 39.5 Z" fill="#FDE047"/>
+    </g>
+  </g>
+</svg>

@@ -72,6 +72,13 @@
       <FooterPart />
 </template>
 <script setup>
+useSeoMeta({
+  title: "Terms and Conditions | KidsStoryFlix",
+  description: "Read the KidsStoryFlix terms and conditions for using our children's story service.",
+  robots: "index, follow"
+})
+useHead({ link: [{ rel: "canonical", href: "https://kidsstoryflix.co.uk/Terms" }] })
+
 import NavBar from "../components/NavBar.vue"
 import FooterPart from "../components/FooterPart.vue"
 </script>

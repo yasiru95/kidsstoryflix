@@ -10,9 +10,37 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  font-family: "Baloo 2", "Fredoka", cursive;
+  font-family: "Fredoka", "Baloo 2", cursive, sans-serif;
   background: linear-gradient(180deg, #fff0f6, #e0f7ff, #fffde7);
   color: #333;
+}
+
+.font-kids {
+  font-family: "Fredoka", "Baloo 2", cursive, sans-serif !important;
+}
+
+.font-fredoka {
+  font-family: "Fredoka", cursive, sans-serif !important;
+}
+
+.font-baloo {
+  font-family: "Baloo 2", cursive, sans-serif !important;
+}
+
+/* =========================
+   SCROLLBAR HIDING
+========================= */
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important;    /* Firefox */
 }
 
 img {

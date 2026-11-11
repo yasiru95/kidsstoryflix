@@ -44,6 +44,13 @@
         🏠 Home
         </NuxtLink>
 
+        <NuxtLink
+        to="/all-stories"
+        class="px-4 py-2 rounded-full text-sm lg:text-base font-bold text-purple-700 hover:bg-pink-100 hover:text-pink-600 transition cursor-pointer"
+        >
+        📚 All Stories
+        </NuxtLink>
+
         <!-- LOGGED IN -->
         <template v-if="global.isLoggedIn">
 
@@ -122,6 +129,13 @@
               class="rounded-2xl bg-pink-50 px-5 py-4 text-lg font-bold text-purple-700 hover:bg-pink-100 transition"
             >
               🏠 Home
+            </NuxtLink>
+
+            <NuxtLink
+              to="/all-stories"
+              class="rounded-2xl bg-purple-50 px-5 py-4 text-lg font-bold text-purple-700 hover:bg-purple-100 transition"
+            >
+              📚 All Stories
             </NuxtLink>
 
           <!-- LOGGED IN -->

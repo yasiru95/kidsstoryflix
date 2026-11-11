@@ -397,8 +397,11 @@ const {
 |
 */
 
-if (storyError.value) {
-  console.log("Story loading error:", storyError.value)
+if (storyError.value || !story.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Story not found"
+  })
 }
 
 
@@ -451,7 +454,7 @@ const pageImage = computed(() => {
     return story.value.pages[0].img
   }
 
-  return `${siteUrl}/images/kidsstoryflix-og.jpg`
+  return `${siteUrl}/assets/hero.png`
 
 })
 
@@ -521,6 +524,18 @@ useHead(() => ({
 
             description:
               story.value.description || "",
+
+            datePublished:
+              story.value.publishedAt || story.value.published_at || undefined,
+
+            dateModified:
+              story.value.updatedAt || story.value.updated_at || undefined,
+
+            inLanguage: "en-GB",
+
+            isAccessibleForFree: true,
+
+            genre: "Children's stories",
 
             image:
               story.value.image

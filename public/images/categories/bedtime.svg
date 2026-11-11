@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- MOON GRADIENT -->
+    <linearGradient id="moon-grad" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#FFF275"/>
+      <stop offset="60%" stop-color="#FFD43F"/>
+      <stop offset="100%" stop-color="#FFA827"/>
+    </linearGradient>
+
+    <!-- NIGHTCAP GRADIENT -->
+    <linearGradient id="cap-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+
+    <!-- CLOUD GRADIENT -->
+    <linearGradient id="night-cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#DDE5F4"/>
+    </linearGradient>
+
+    <!-- STAR GLOW -->
+    <linearGradient id="star-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8B6"/>
+      <stop offset="100%" stop-color="#FFC000"/>
+    </linearGradient>
+
+    <filter id="moon-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#4F46E5" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#moon-shadow)">
+    <!-- COZY CLOUD AT BASE -->
+    <g transform="translate(14, 66)">
+      <path d="M22 36 C10 36 2 28 2 18 C2 9 9 3 18 4 C23 -3 36 -3 42 4 C50 -1 60 4 62 14 C69 14 74 19 74 26 C74 34 68 36 60 36 Z" fill="url(#night-cloud)"/>
+      <circle cx="28" cy="24" r="3.5" fill="#FDA4AF" opacity="0.6"/>
+      <circle cx="56" cy="24" r="3.5" fill="#FDA4AF" opacity="0.6"/>
+      <!-- Soft sleeping face on cloud -->
+      <path d="M36 22 Q42 27 48 22" stroke="#6366F1" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- SLEEPY CRESCENT MOON -->
+    <path d="M72 16 C50 16 34 32 34 54 C34 76 50 92 72 92 C77 92 82 91 86 89 C72 84 62 70 62 54 C62 38 72 24 86 19 C82 17 77 16 72 16 Z" fill="url(#moon-grad)"/>
+
+    <!-- MOON SLEEPY FACE -->
+    <!-- Closed Smiling Eye with fluttery lashes -->
+    <path d="M48 48 Q54 55 60 48" stroke="#78350F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M51 51 L48 54" stroke="#78350F" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M57 51 L60 54" stroke="#78350F" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Rosy Cheek -->
+    <ellipse cx="56" cy="57" rx="5" ry="3.5" fill="#FF708F" opacity="0.7"/>
+    <!-- Sweet Gentle Smile -->
+    <path d="M47 58 Q50 63 53 59" stroke="#78350F" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- CUTE SLEEPING NIGHTCAP -->
+    <g transform="translate(42, 6) rotate(-12)">
+      <!-- Hat Cone curved drooping to the right -->
+      <path d="M12 28 Q24 6 52 14 Q38 32 30 36 Z" fill="url(#cap-grad)"/>
+      <!-- Hat White Rim -->
+      <rect x="8" y="26" width="24" height="8" rx="4" fill="#FFFFFF"/>
+      <circle cx="12" cy="30" r="3" fill="#E2E8F0"/>
+      <circle cx="20" cy="30" r="3" fill="#E2E8F0"/>
+      <circle cx="28" cy="30" r="3" fill="#E2E8F0"/>
+      <!-- Polka Dots on Hat -->
+      <circle cx="25" cy="20" r="2.2" fill="#DDD6FE"/>
+      <circle cx="36" cy="18" r="2" fill="#DDD6FE"/>
+      <circle cx="44" cy="16" r="1.8" fill="#DDD6FE"/>
+      <!-- Fluffy White Pom Pom at the tip -->
+      <circle cx="53" cy="14" r="5" fill="#FFFFFF"/>
+      <circle cx="53" cy="14" r="3" fill="#F1F5F9"/>
+    </g>
+
+    <!-- HANGING DREAM STARS & SPARKLES -->
+    <g>
+      <!-- Twinkle Star 1 -->
+      <path d="M22 28 L24 22 L26 28 L32 30 L26 32 L24 38 L22 32 L16 30 Z" fill="url(#star-gold)"/>
+      <!-- Twinkle Star 2 -->
+      <path d="M96 38 L97.5 33 L99 38 L104 39.5 L99 41 L97.5 46 L96 41 L91 39.5 Z" fill="url(#star-gold)"/>
+      <!-- Sparkles -->
+      <circle cx="94" cy="74" r="2.5" fill="#FDE047"/>
+      <circle cx="20" cy="52" r="2" fill="#FDE047"/>
+      <circle cx="82" cy="22" r="1.8" fill="#FFFFFF"/>
+    </g>
+  </g>
+</svg>

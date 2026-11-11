@@ -109,6 +109,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { onMounted } from "vue"
 import { globalStore } from "../pinaGlobal/global"
 import api from "../services/Api.js"

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- ROCKET BODY GRADIENT -->
+    <linearGradient id="rocket-fuselage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+
+    <!-- NOSE & FINS GRADIENT -->
+    <linearGradient id="rocket-red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF5376"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+
+    <!-- WINDOW PORTHOLE -->
+    <linearGradient id="window-glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <!-- FLAME GRADIENTS -->
+    <linearGradient id="flame-outer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF6B00"/>
+      <stop offset="100%" stop-color="#FF2E00"/>
+    </linearGradient>
+    <linearGradient id="flame-inner" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFA75"/>
+      <stop offset="100%" stop-color="#FFBE0B"/>
+    </linearGradient>
+
+    <filter id="rocket-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#0284C7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#rocket-shadow)">
+    <!-- BACKGROUND MINI PLANET WITH RING -->
+    <g transform="translate(16, 20)">
+      <!-- Ring Back -->
+      <path d="M0 12 C0 6 22 2 30 7" stroke="#A78BFA" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+      <!-- Planet Sphere -->
+      <circle cx="16" cy="12" r="10" fill="#C084FC"/>
+      <circle cx="13" cy="9" r="2.5" fill="#DDD6FE" opacity="0.8"/>
+      <!-- Ring Front -->
+      <path d="M2 13 C8 18 26 18 32 11" stroke="#E9D5FF" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- ROCKET GROUP (ROTATED 45 DEGREES FLYING UP-RIGHT) -->
+    <g transform="translate(60, 58) rotate(-45)">
+      <!-- THRUSTER EXHAUST FLAME -->
+      <path d="M-8 32 C-14 46 -4 56 0 62 C4 56 14 46 8 32 Z" fill="url(#flame-outer)"/>
+      <path d="M-5 32 C-8 42 -2 50 0 54 C2 50 8 42 5 32 Z" fill="url(#flame-inner)"/>
+      <!-- Tiny Sparkle Ember -->
+      <circle cx="0" cy="68" r="2.5" fill="#FFE066"/>
+      <circle cx="-6" cy="60" r="1.5" fill="#FF8800"/>
+      <circle cx="6" cy="56" r="1.5" fill="#FF8800"/>
+
+      <!-- ROCKET FINS -->
+      <!-- Left Fin -->
+      <path d="M-15 15 C-26 22 -28 36 -24 38 C-18 38 -15 32 -13 28 Z" fill="url(#rocket-red)"/>
+      <!-- Right Fin -->
+      <path d="M15 15 C26 22 28 36 24 38 C18 38 15 32 13 28 Z" fill="url(#rocket-red)"/>
+      <!-- Center Fin Base -->
+      <path d="M-4 22 L4 22 L3 32 L-3 32 Z" fill="#94A3B8"/>
+
+      <!-- MAIN FUSELAGE BODY -->
+      <path d="M0 -34 C16 -18 18 10 14 30 C10 32 -10 32 -14 30 C-18 10 -16 -18 0 -34 Z" fill="url(#rocket-fuselage)"/>
+
+      <!-- RED NOSE CONE -->
+      <path d="M0 -34 C9 -23 13 -13 14 -6 C9 -4 -9 -4 -14 -6 C-13 -13 -9 -23 0 -34 Z" fill="url(#rocket-red)"/>
+
+      <!-- SPECULAR HIGHLIGHT ON BODY -->
+      <path d="M-11 -2 C-9 -14 -4 -22 0 -26 C-4 -20 -7 -10 -9 6 C-10 16 -8 24 -6 28 C-9 24 -11 12 -11 -2 Z" fill="#FFFFFF" opacity="0.75"/>
+
+      <!-- CIRCULAR PORTHOLE WINDOW -->
+      <!-- Window Outer Ring -->
+      <circle cx="0" cy="8" r="9" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+      <!-- Window Glass -->
+      <circle cx="0" cy="8" r="7" fill="url(#window-glass)"/>
+      <!-- Cute Window Face (Smiley inside porthole!) -->
+      <circle cx="-2" cy="7" r="1" fill="#FFFFFF"/>
+      <circle cx="2" cy="7" r="1" fill="#FFFFFF"/>
+      <path d="M-2 10 Q0 12 2 10" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" fill="none"/>
+      <!-- Glass Glare Reflection -->
+      <path d="M-4 3 C-2 2 3 3 5 6" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    </g>
+
+    <!-- FLOATING STARS & GALAXY DUST -->
+    <g>
+      <!-- Big Gold Star -->
+      <path d="M96 24 L98 17 L100 24 L107 26 L100 28 L98 35 L96 28 L89 26 Z" fill="#FFD000"/>
+      <!-- Small Star -->
+      <path d="M22 84 L23.5 79 L25 84 L30 85.5 L25 87 L23.5 92 L22 87 L17 85.5 Z" fill="#38BDF8"/>
+      <!-- Sparkle dots -->
+      <circle cx="98" cy="68" r="2.5" fill="#FDE047"/>
+      <circle cx="86" cy="94" r="2" fill="#FFFFFF"/>
+      <circle cx="34" cy="62" r="1.8" fill="#F472B6"/>
+    </g>
+  </g>
+</svg>

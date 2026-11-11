@@ -343,6 +343,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { reactive, computed, ref } from "vue";
 import api from "../services/Api"; // Assuming you have an api.js file for axios instance
 

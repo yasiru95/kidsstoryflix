@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- RAINBOW GRADIENTS -->
+    <linearGradient id="rb-red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF5E8E"/>
+      <stop offset="100%" stop-color="#FF2A6D"/>
+    </linearGradient>
+    <linearGradient id="rb-orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#FF7800"/>
+    </linearGradient>
+    <linearGradient id="rb-yellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF066"/>
+      <stop offset="100%" stop-color="#FFD000"/>
+    </linearGradient>
+    <linearGradient id="rb-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4EECD3"/>
+      <stop offset="100%" stop-color="#05C9A7"/>
+    </linearGradient>
+    <linearGradient id="rb-purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    
+    <!-- CLOUD GRADIENT -->
+    <linearGradient id="cloud-white" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2EDFD"/>
+    </linearGradient>
+
+    <!-- WAND GRADIENT -->
+    <linearGradient id="wand-star" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF587"/>
+      <stop offset="100%" stop-color="#FFB800"/>
+    </linearGradient>
+
+    <filter id="soft-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#8B5CF6" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#soft-shadow)">
+    <!-- RAINBOW ARCS -->
+    <path d="M18 78 A42 42 0 0 1 102 78" stroke="url(#rb-red)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M25 78 A35 35 0 0 1 95 78" stroke="url(#rb-orange)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M32 78 A28 28 0 0 1 88 78" stroke="url(#rb-yellow)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M39 78 A21 21 0 0 1 81 78" stroke="url(#rb-green)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M46 78 A14 14 0 0 1 74 78" stroke="url(#rb-purple)" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- LEFT CLOUD (KAWAII) -->
+    <g transform="translate(10, 60)">
+      <!-- Cloud Body -->
+      <path d="M12 24 C6 24 0 19 0 13 C0 7 6 3 12 4 C15 -1 24 -1 28 4 C34 1 40 5 40 11 C43 12 44 16 43 19 C41 23 37 24 33 24 Z" fill="url(#cloud-white)"/>
+      <!-- Rosy Cheeks -->
+      <circle cx="8" cy="15" r="3" fill="#FF8BA7" opacity="0.7"/>
+      <circle cx="28" cy="15" r="3" fill="#FF8BA7" opacity="0.7"/>
+      <!-- Happy Eyes -->
+      <path d="M11 12 Q13 10 15 12" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M21 12 Q23 10 25 12" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <!-- Cute Smile -->
+      <path d="M17 14 Q18 17 19 14" stroke="#4C1D95" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- RIGHT CLOUD (KAWAII) -->
+    <g transform="translate(68, 62)">
+      <path d="M12 22 C6 22 0 17 0 12 C0 6 6 2 12 3 C15 -2 24 -2 28 3 C34 0 40 4 40 10 C43 11 44 15 43 18 C41 21 37 22 33 22 Z" fill="url(#cloud-white)"/>
+      <circle cx="8" cy="14" r="2.8" fill="#FF8BA7" opacity="0.7"/>
+      <circle cx="28" cy="14" r="2.8" fill="#FF8BA7" opacity="0.7"/>
+      <path d="M11 11 Q13 9 15 11" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M21 11 Q23 9 25 11" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M17 13 Q18 16 19 13" stroke="#4C1D95" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- MAGIC WAND -->
+    <g transform="translate(74, 18) rotate(18)">
+      <!-- Wand Stick -->
+      <rect x="18" y="22" width="5" height="28" rx="2.5" fill="#C4B5FD"/>
+      <rect x="19" y="23" width="3" height="26" rx="1.5" fill="#EDE9FE"/>
+      <!-- Glowing Star Top -->
+      <path d="M20.5 4 L24 14 L34 15 L26 21 L29 31 L20.5 25 L12 31 L15 21 L7 15 L17 14 Z" fill="url(#wand-star)"/>
+      <!-- Highlight -->
+      <circle cx="18" cy="16" r="2" fill="#FFFFFF" opacity="0.9"/>
+    </g>
+
+    <!-- FLOATING MAGIC SPARKLES -->
+    <path d="M28 26 L30 19 L32 26 L39 28 L32 30 L30 37 L28 30 L21 28 Z" fill="#FFE600"/>
+    <path d="M96 52 L97 47 L98 52 L103 53 L98 54 L97 59 L96 54 L91 53 Z" fill="#FF69B4"/>
+    <circle cx="48" cy="20" r="2.5" fill="#FFF" opacity="0.9"/>
+    <circle cx="18" cy="46" r="2" fill="#FFE57F"/>
+    <circle cx="98" cy="30" r="2" fill="#A7F3D0"/>
+  </g>
+</svg>

@@ -111,6 +111,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { ref, onMounted, computed } from "vue"
 import NavBar from "../components/NavBar.vue"
 import { globalStore } from "../pinaGlobal/global"

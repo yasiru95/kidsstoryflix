@@ -77,6 +77,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { reactive, ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";

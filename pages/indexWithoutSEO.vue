@@ -130,6 +130,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { ref, onMounted, onUnmounted } from "vue"
 
 import HeroSlider from "../components/HeroSlider.vue"

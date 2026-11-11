@@ -42,8 +42,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'en'
+      },
       title: 'KidsStoryFlix',
-
       meta: [
         { charset: 'utf-8' },
         {
@@ -52,15 +54,18 @@ export default defineNuxtConfig({
         },
         {
           name: 'description',
-          content: 'Free kids bedtime stories'
+          content: 'Free bedtime, moral and educational stories for children.'
         },
         {
           name: 'keywords',
           content:
             'kids stories, bedtime stories, moral stories for children'
+        },
+        {
+          property: 'og:site_name',
+          content: 'KidsStoryFlix'
         }
       ],
-
       link: [
         {
           rel: 'preconnect',

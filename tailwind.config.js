@@ -1,5 +1,12 @@
 export default {
   content: [
+    "./components/**/*.{vue,js,ts}",
+    "./layouts/**/*.{vue,js,ts}",
+    "./pages/**/*.{vue,js,ts}",
+    "./composables/**/*.{vue,js,ts}",
+    "./plugins/**/*.{vue,js,ts}",
+    "./app.{js,ts,vue}",
+    "./app.vue",
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
@@ -27,7 +34,9 @@ export default {
       },
 
       fontFamily: {
-        kids: ["Baloo 2", "Fredoka", "Comic Sans MS", "cursive"],
+        kids: ["Fredoka", "Baloo 2", "Comic Sans MS", "cursive", "sans-serif"],
+        fredoka: ["Fredoka", "cursive", "sans-serif"],
+        baloo: ["Baloo 2", "cursive", "sans-serif"],
       },
 
       boxShadow: {

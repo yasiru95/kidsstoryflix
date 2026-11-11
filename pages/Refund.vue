@@ -69,6 +69,13 @@
       <FooterPart />
 </template>
       <script setup>
+      useSeoMeta({
+        title: "Refund Policy | KidsStoryFlix",
+        description: "Read the KidsStoryFlix refund and subscription payment policy.",
+        robots: "index, follow"
+      })
+      useHead({ link: [{ rel: "canonical", href: "https://kidsstoryflix.co.uk/Refund" }] })
+
       import NavBar from "../components/NavBar.vue"
       import FooterPart from "../components/FooterPart.vue"
       </script>

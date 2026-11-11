@@ -118,6 +118,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 import { ref, onMounted, onUnmounted } from "vue"
 //pass data from NavBar to here using route query
 

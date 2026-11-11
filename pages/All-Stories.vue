@@ -83,6 +83,22 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: "All Kids Stories | KidsStoryFlix",
+  description: "Browse bedtime, moral and educational stories for children on KidsStoryFlix.",
+  robots: "index, follow",
+  ogTitle: "All Kids Stories | KidsStoryFlix",
+  ogDescription: "Browse bedtime, moral and educational stories for children on KidsStoryFlix.",
+  ogType: "website",
+  ogUrl: "https://kidsstoryflix.co.uk/All-Stories",
+  ogImage: "https://kidsstoryflix.co.uk/assets/hero.png",
+  twitterCard: "summary_large_image"
+})
+
+useHead({
+  link: [{ rel: "canonical", href: "https://kidsstoryflix.co.uk/All-Stories" }]
+})
+
 import NavBar from "../components/NavBar.vue"
 import StoryCard from "../components/StoryCard.vue"
 import api from "../services/Api.js"

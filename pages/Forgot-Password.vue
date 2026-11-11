@@ -162,6 +162,8 @@
 </template>
 
 <script setup>
+useSeoMeta({ robots: "noindex, nofollow" })
+
 </script>
 
 <style scoped>

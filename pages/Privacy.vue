@@ -71,6 +71,13 @@
       <FooterPart />
 </template>
 <script setup>
+useSeoMeta({
+  title: "Privacy Policy | KidsStoryFlix",
+  description: "Read the KidsStoryFlix privacy policy and learn how we protect children and family data.",
+  robots: "index, follow"
+})
+useHead({ link: [{ rel: "canonical", href: "https://kidsstoryflix.co.uk/Privacy" }] })
+
 import NavBar from "../components/NavBar.vue"   
 import FooterPart from "../components/FooterPart.vue"
 </script>

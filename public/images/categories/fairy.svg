@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- HORN GRADIENT -->
+    <linearGradient id="unicorn-horn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF275"/>
+      <stop offset="50%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FFA500"/>
+    </linearGradient>
+
+    <!-- MANE GRADIENTS -->
+    <linearGradient id="mane-pink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFAEC9"/>
+      <stop offset="100%" stop-color="#FF5D8F"/>
+    </linearGradient>
+    <linearGradient id="mane-purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D8B4FE"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </linearGradient>
+    <linearGradient id="mane-cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A5F3FC"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+
+    <!-- BODY GRADIENT -->
+    <linearGradient id="unicorn-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F5F3FF"/>
+    </linearGradient>
+
+    <radialGradient id="unicorn-blush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF70A6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF70A6" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="fairy-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#C026D3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#fairy-shadow)">
+    <!-- BACK MANE STRANDS -->
+    <path d="M52 26 C42 16 26 28 22 46 C18 64 26 84 36 94 C34 86 36 74 44 64 Z" fill="url(#mane-cyan)"/>
+    <path d="M46 32 C36 24 22 38 18 58 C16 76 24 94 34 100 C30 92 34 80 40 70 Z" fill="url(#mane-purple)"/>
+
+    <!-- UNICORN HEAD / SNOUT (PROFILE) -->
+    <!-- Head Base -->
+    <path d="M48 30 C56 22 72 26 78 35 C84 44 94 54 94 65 C94 76 86 84 76 84 C68 84 62 80 56 86 C50 92 46 102 46 102 L36 96 C36 90 40 78 42 70 C44 62 44 48 48 30 Z" fill="url(#unicorn-body)"/>
+
+    <!-- UNICORN EAR -->
+    <g transform="translate(48, 22)">
+      <path d="M8 22 C6 14 10 4 16 0 C20 6 20 16 18 24 Z" fill="url(#unicorn-body)"/>
+      <path d="M10 20 C9 15 12 7 15 4 C17 8 17 15 16 21 Z" fill="#F472B6" opacity="0.65"/>
+    </g>
+
+    <!-- FRONT FLOWING MANE SWIRLS -->
+    <path d="M56 26 C64 26 68 34 68 40 C68 46 62 52 54 50 C48 48 46 38 52 30 Z" fill="url(#mane-pink)"/>
+    <path d="M60 40 C68 42 70 50 68 56 C66 62 58 64 52 60 C46 56 48 48 54 44 Z" fill="url(#mane-purple)"/>
+    <path d="M48 64 C56 66 60 76 56 84 C52 90 44 92 40 86 C36 80 38 72 44 68 Z" fill="url(#mane-cyan)"/>
+
+    <!-- MAGIC TWISTED HORN -->
+    <g>
+      <path d="M68 28 L92 4 L80 26 Z" fill="url(#unicorn-horn)"/>
+      <!-- Horn Stripes -->
+      <path d="M72 24 L76 21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+      <path d="M78 18 L82 15" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+      <path d="M84 12 L87 9" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- SWEET DREAMY EYE (Closed smiling or big sparkle) -->
+    <!-- Closed curved smile eye with long fairy lashes -->
+    <path d="M70 50 Q77 56 83 50" stroke="#4C1D95" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M74 53 L72 57" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M79 53 L81 57" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M83 50 L86 52" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- BLUSH CHEEK -->
+    <circle cx="76" cy="62" r="6" fill="url(#unicorn-blush)"/>
+
+    <!-- TINY NOSTRIL & SMILE -->
+    <circle cx="89" cy="68" r="1.5" fill="#F472B6"/>
+    <path d="M84 74 Q88 77 92 73" stroke="#9333EA" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+    <!-- FLOATING FAIRY SPARKLES & STARS -->
+    <!-- Gold Fairy Star -->
+    <path d="M96 16 L98 9 L100 16 L107 18 L100 20 L98 27 L96 20 L89 18 Z" fill="#FDE047"/>
+    <!-- Pink Fairy Star -->
+    <path d="M102 44 L103.5 39 L105 44 L110 45.5 L105 47 L103.5 52 L102 47 L97 45.5 Z" fill="#F472B6"/>
+    <!-- Small sparkles -->
+    <circle cx="68" cy="10" r="2" fill="#FFFFFF"/>
+    <circle cx="88" cy="32" r="1.8" fill="#FDE047"/>
+    <circle cx="106" cy="66" r="2" fill="#C084FC"/>
+  </g>
+</svg>
