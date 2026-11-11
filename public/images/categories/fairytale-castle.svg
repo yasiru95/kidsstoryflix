@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="castle-pink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA8C5"/>
+      <stop offset="100%" stop-color="#E74674"/>
+    </linearGradient>
+    <linearGradient id="roof-purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="star-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF275"/>
+      <stop offset="100%" stop-color="#FFB800"/>
+    </linearGradient>
+    <filter id="cs-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#BE185D" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cs-shadow)">
+    <!-- MAGIC CLOUD BASE -->
+    <path d="M25 96 C15 96 10 88 15 82 C18 76 28 76 34 80 C40 74 54 74 60 80 C66 74 80 74 86 80 C92 76 102 76 105 82 C110 88 105 96 95 96 Z" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- MAIN CASTLE WALL -->
+    <rect x="34" y="55" width="52" height="36" rx="4" fill="url(#castle-pink)"/>
+
+    <!-- CASTLE DOOR (ARCH) -->
+    <path d="M52 91 L52 74 C52 69 68 69 68 74 L68 91 Z" fill="#6B21A8"/>
+    <circle cx="56" cy="82" r="1.5" fill="#FDE047"/>
+
+    <!-- SIDE TOWER LEFT -->
+    <rect x="26" y="44" width="16" height="47" rx="3" fill="url(#castle-pink)"/>
+    <polygon points="34,22 22,46 46,46" fill="url(#roof-purple)"/>
+    <!-- Window -->
+    <rect x="31" y="52" width="6" height="10" rx="3" fill="#6B21A8"/>
+
+    <!-- SIDE TOWER RIGHT -->
+    <rect x="78" y="44" width="16" height="47" rx="3" fill="url(#castle-pink)"/>
+    <polygon points="86,22 74,46 98,46" fill="url(#roof-purple)"/>
+    <!-- Window -->
+    <rect x="83" y="52" width="6" height="10" rx="3" fill="#6B21A8"/>
+
+    <!-- CENTER TOWER (TALLER) -->
+    <rect x="48" y="36" width="24" height="25" rx="3" fill="url(#castle-pink)"/>
+    <polygon points="60,10 44,38 76,38" fill="url(#roof-purple)"/>
+    <!-- Window -->
+    <rect x="57" y="42" width="6" height="10" rx="3" fill="#6B21A8"/>
+
+    <!-- GOLDEN FLAGS ATOP ROOFS -->
+    <path d="M60 10 L60 4 L68 7 Z" fill="#FBBF24"/>
+    <path d="M34 22 L34 16 L40 19 Z" fill="#FBBF24"/>
+    <path d="M86 22 L86 16 L92 19 Z" fill="#FBBF24"/>
+
+    <!-- MAGIC WAND DIAGONAL -->
+    <g transform="translate(18, 20) rotate(-25)">
+      <rect x="18" y="22" width="4" height="32" rx="2" fill="#E9D5FF"/>
+      <!-- Star Head -->
+      <path d="M20 12 L22 17 L27 18 L23 21 L24 26 L20 23 L16 26 L17 21 L13 18 L18 17 Z" fill="url(#star-gold)"/>
+    </g>
+
+    <!-- FLOATING MAGIC SPARKLES -->
+    <path d="M96 26 L97.5 21 L99 26 L104 27.5 L99 29 L97.5 34 L96 29 L91 27.5 Z" fill="#FFD000"/>
+    <circle cx="106" cy="48" r="2.5" fill="#F472B6"/>
+    <circle cx="16" cy="70" r="2" fill="#FDE047"/>
+  </g>
+</svg>

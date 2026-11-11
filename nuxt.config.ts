@@ -29,6 +29,8 @@ export default defineNuxtConfig({
       '/ErrorPagePayment',
       '/SucessPagePayment',
       '/indexWithoutSEO',
+      '/admin/**',
+      '/admin'
     ]
   },
 

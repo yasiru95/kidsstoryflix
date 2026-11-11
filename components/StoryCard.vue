@@ -1,92 +1,110 @@
 <template>
   <div
-    class="group relative w-[185px] sm:w-[215px] md:w-[245px] shrink-0 snap-start select-none flex flex-col h-full"
+    class="group/card relative flex flex-col justify-between select-none"
+    :class="[
+      featured
+        ? 'w-full max-w-[300px] mx-auto'
+        : inGrid
+          ? 'w-full max-w-[210px] mx-auto'
+          : 'w-[170px] sm:w-[195px] md:w-[220px] shrink-0 snap-start mx-auto'
+    ]"
   >
     <NuxtLink
       :to="`/story/${story.slug || story.id}`"
-      class="flex flex-col flex-1 h-full focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-3xl"
+      class="block focus:outline-none focus:ring-4 focus:ring-purple-300 rounded-2xl"
       :aria-label="`Read ${story.title || 'Story'}`"
     >
-      <div
-        class="relative overflow-hidden rounded-3xl bg-white p-2.5 sm:p-3
-               border-2 border-purple-100/90 shadow-[0_8px_20px_-4px_rgba(147,51,234,0.12)]
-               transition-all duration-300 ease-out
-               group-hover:-translate-y-2 group-hover:scale-[1.02]
-               group-hover:shadow-[0_18px_32px_-4px_rgba(236,72,153,0.25)]
-               group-hover:border-pink-300
-               flex flex-col flex-1 h-full"
-      >
-        <!-- COVER IMAGE CONTAINER (FIXED HEIGHT ON ALL CARDS) -->
-        <div class="relative w-full h-56 sm:h-64 md:h-72 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-pink-100 via-purple-100 to-sky-100 shadow-inner">
+      <!-- 3D HARDCOVER BOOK WRAPPER (KIDSLATA 3D STYLE) -->
+      <div class="relative pt-1 pb-2 px-1">
+        <!-- 3D REALISTIC CAST SHADOW BENEATH BOOK -->
+        <div class="absolute -bottom-1.5 left-4 right-1 h-3.5 bg-black/25 blur-md rounded-full transition-all duration-300 group-hover/card:scale-110 group-hover/card:opacity-40"></div>
+
+        <!-- 3D PHYSICAL PAGES EDGE (RIGHT SIDE OF BOOK) -->
+        <div
+          class="absolute top-2 bottom-2 -right-2 w-2.5 sm:w-3 rounded-r-md border-r border-t border-b border-stone-300/90 shadow-sm"
+          style="background: repeating-linear-gradient(to bottom, #ffffff, #ffffff 2px, #e7e5e4 2px, #e7e5e4 3px);"
+        ></div>
+
+        <!-- 3D PHYSICAL PAGES EDGE (BOTTOM OF BOOK) -->
+        <div
+          class="absolute -bottom-1.5 left-3 right-0 h-2 sm:h-2.5 rounded-b-md border-b border-l border-r border-stone-300/90 shadow-sm"
+          style="background: repeating-linear-gradient(to right, #ffffff, #ffffff 2px, #e7e5e4 2px, #e7e5e4 3px);"
+        ></div>
+
+        <!-- HARDCOVER BOOK BODY -->
+        <div
+          class="relative overflow-hidden rounded-r-xl rounded-l-sm bg-gradient-to-br from-indigo-950 via-purple-900 to-indigo-900 aspect-[3/4] w-full border-t border-r border-b border-white/25 shadow-xl transition-all duration-300 transform group-hover/card:-translate-y-2 group-hover/card:rotate-[-1.5deg] group-hover/card:shadow-2xl"
+        >
+          <!-- BOOK COVER ARTWORK -->
           <img
             :src="story.image || defaultImage"
             :alt="`${story.title || 'Story'} - KidsStoryFlix`"
-            class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+            class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover/card:scale-108"
             loading="lazy"
             decoding="async"
             @error="onImageError"
           />
 
-          <!-- SUBTLE GRADIENT OVERLAY -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300"></div>
+          <!-- 3D BOOK SPINE CREASE & FOLD SHADOW (LEFT EDGE) -->
+          <div class="absolute top-0 bottom-0 left-0 w-3.5 sm:w-4 bg-gradient-to-r from-black/60 via-black/25 to-transparent z-20 pointer-events-none"></div>
+          <div class="absolute top-0 bottom-0 left-2.5 sm:left-3 w-0.5 bg-white/30 z-20 pointer-events-none"></div>
 
-          <!-- TOP BADGES -->
-          <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none gap-1">
-            <!-- Category Tag -->
+          <!-- TOP CATEGORY PILL BADGE (CENTERED ON COVER) -->
+          <div class="absolute top-2 sm:top-2.5 inset-x-0 flex justify-center z-20 pointer-events-none px-2">
             <span
-              class="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] sm:text-xs font-bold font-kids text-white shadow-md backdrop-blur-md border border-white/30"
-              :class="badgeColorClass"
+              class="rounded-full px-3 py-0.5 text-[9px] sm:text-[11px] font-black font-kids uppercase tracking-wider text-white shadow-md border border-white/40 drop-shadow-sm"
+              :class="categoryBadgeClass"
             >
-              <span>{{ badgeIcon }}</span>
-              <span class="tracking-wide">{{ badgeText }}</span>
-            </span>
-
-            <!-- Featured Star -->
-            <span
-              v-if="story.is_featured || story.id % 2 === 0"
-              class="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 to-amber-400 text-xs shadow-md border border-white/60 animate-bounceSoft"
-              title="Featured Star"
-            >
-              ⭐
+              {{ badgeText }}
             </span>
           </div>
 
-          <!-- HOVER "READ NOW" ACTION CHIP -->
-          <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-[90%] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <div class="flex items-center justify-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-extrabold font-kids text-purple-700 shadow-xl backdrop-blur-md border border-purple-100 hover:bg-purple-600 hover:text-white transition-colors">
-              <span>Read Story</span>
-              <span class="text-sm">📖</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STORY TITLE & INFO (UNIFORM EXACT HEIGHT ON EVERY CARD) -->
-        <div class="pt-3 pb-1 px-1 flex flex-col flex-1 justify-between">
-          <!-- TITLE (EXACT SAME HEIGHT: h-10 on mobile, h-12 on desktop with line-clamp-2) -->
-          <h3
-            class="font-bold font-kids text-sm sm:text-base text-gray-800 group-hover:text-purple-700 transition-colors line-clamp-2 h-10 sm:h-12 flex items-center leading-snug"
-            :title="story.title"
-          >
-            {{ story.title || "Magical Adventure" }}
-          </h3>
-
-          <!-- FOOTER PILLS (PINNED TO EXACT SAME BOTTOM POSITION) -->
-          <div class="mt-2.5 flex items-center justify-between text-[11px] sm:text-xs font-semibold gap-1 shrink-0">
-            <!-- Reading Time Pill -->
-            <span class="inline-flex items-center gap-1 rounded-full bg-pink-50 px-2.5 py-0.5 text-pink-600 font-kids font-bold border border-pink-100/60 shrink-0">
-              <span>⏱️</span>
-              <span>{{ readingTime }}m</span>
-            </span>
-
-            <!-- Audio Pill -->
-            <span class="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2.5 py-0.5 text-sky-600 font-kids font-bold border border-sky-100/60 shrink-0">
-              <span>🎧</span>
-              <span>Audio</span>
-            </span>
+          <!-- BOTTOM TITLE OVERLAY ON COVER -->
+          <div class="absolute bottom-0 inset-x-0 p-2.5 sm:p-3 pt-8 bg-gradient-to-t from-black/90 via-black/55 to-transparent z-20 text-center">
+            <h4
+              class="font-extrabold font-baloo text-white text-xs sm:text-sm md:text-base leading-snug drop-shadow-md line-clamp-2"
+              :title="story.title"
+            >
+              {{ story.title || "Magical Adventure" }}
+            </h4>
+            <p class="text-[9px] sm:text-[10px] text-white/80 font-kids mt-0.5 tracking-wider">
+              By KidsStoryFlix
+            </p>
           </div>
         </div>
       </div>
     </NuxtLink>
+
+    <!-- METADATA ROW (AGE + READING TIME PILLS) -->
+    <div class="mt-2.5 flex items-center justify-between text-[10px] sm:text-[11px] font-bold font-kids gap-1 px-1">
+      <!-- Age Pill -->
+      <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 sm:px-2.5 py-0.5 sm:py-1 text-amber-800 border border-amber-200/80 shrink-0">
+        <span>👶</span>
+        <span>{{ ageRange }}</span>
+      </span>
+
+      <!-- Reading Time Pill -->
+      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 sm:px-2.5 py-0.5 sm:py-1 text-slate-700 border border-slate-200 shrink-0">
+        <span>⏱️</span>
+        <span>{{ readingTime }} Min</span>
+      </span>
+    </div>
+
+    <!-- VIBRANT READ NOW BUTTON (DARK OR ORANGE BASED ON PROP) -->
+    <div class="mt-2 px-0.5">
+      <NuxtLink
+        :to="`/story/${story.slug || story.id}`"
+        class="w-full inline-flex items-center justify-center gap-1.5 rounded-full
+               text-white font-extrabold font-kids text-xs sm:text-sm py-2 sm:py-2.5 px-3
+               hover:scale-105 active:scale-95 transition-all duration-200"
+        :class="darkButton
+          ? 'bg-[#1a2552] hover:bg-purple-900 shadow-[0_4px_12px_rgba(26,37,82,0.4)]'
+          : 'bg-gradient-to-r from-amber-500 via-orange-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 shadow-[0_4px_12px_rgba(249,115,22,0.4)] hover:shadow-[0_6px_18px_rgba(249,115,22,0.6)]'"
+      >
+        <span>Read Now</span>
+        <span class="text-sm">📖</span>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -98,6 +116,18 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  featured: {
+    type: Boolean,
+    default: false,
+  },
+  inGrid: {
+    type: Boolean,
+    default: false,
+  },
+  darkButton: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const defaultImage = "https://res.cloudinary.com/dxe23gtsc/image/upload/v1779272834/6_bli0uv.webp"
@@ -106,26 +136,38 @@ const onImageError = (event) => {
   event.target.src = defaultImage
 }
 
-// Fun deterministic badge calculation based on story ID or title
-const badgeData = [
-  { text: "Bedtime", icon: "🌙", color: "bg-indigo-600/90" },
-  { text: "Adventure", icon: "🚀", color: "bg-sky-600/90" },
-  { text: "Animal Tale", icon: "🦁", color: "bg-amber-600/90" },
-  { text: "Fairy Tale", icon: "✨", color: "bg-pink-600/90" },
-  { text: "Fun & Laughs", icon: "🎈", color: "bg-emerald-600/90" },
+// Category badges matching reference image (ADVENTURE, MAGIC, FAIRY TALE, ANIMALS, BEDTIME)
+const badgeList = [
+  { text: "ADVENTURE", color: "bg-gradient-to-r from-blue-600 to-indigo-600" },
+  { text: "MAGIC", color: "bg-gradient-to-r from-pink-500 to-purple-600" },
+  { text: "ANIMAL TALE", color: "bg-gradient-to-r from-amber-500 to-orange-600" },
+  { text: "FAIRY TALE", color: "bg-gradient-to-r from-rose-500 to-pink-500" },
+  { text: "BEDTIME", color: "bg-gradient-to-r from-indigo-500 to-blue-500" },
 ]
 
 const storyIndex = computed(() => {
   const id = Number(props.story?.id) || 0
-  return Math.abs(id) % badgeData.length
+  return Math.abs(id) % badgeList.length
 })
 
-const badgeText = computed(() => badgeData[storyIndex.value].text)
-const badgeIcon = computed(() => badgeData[storyIndex.value].icon)
-const badgeColorClass = computed(() => badgeData[storyIndex.value].color)
+const badgeText = computed(() => {
+  if (props.story?.category) {
+    return props.story.category.toUpperCase()
+  }
+  return badgeList[storyIndex.value].text
+})
+
+const categoryBadgeClass = computed(() => badgeList[storyIndex.value].color)
 
 const readingTime = computed(() => {
   const id = Number(props.story?.id) || 3
   return 3 + (id % 4) // 3 to 6 min read
+})
+
+const ageRange = computed(() => {
+  if (props.story?.age) return `Age ${props.story.age}`
+  const ranges = ["Age 3-7", "Age 4-8", "Age 5-9", "Age 6-10"]
+  const id = Number(props.story?.id) || 0
+  return ranges[id % ranges.length]
 })
 </script>

@@ -1,15 +1,8 @@
 <template>
   <div
-    :class="[
-      'min-h-screen transition-colors duration-700 font-[\'Fredoka\'] overflow-x-hidden',
-      isBedtimeMode
-        ? 'bg-gradient-to-b from-slate-950 via-indigo-950 to-purple-950 text-purple-100'
-        : 'bg-gradient-to-b from-pink-100 via-sky-100 to-amber-50 text-gray-800'
-    ]"
+    class="min-h-screen relative font-['Fredoka'] overflow-x-hidden text-gray-800"
+    style="background-color: #0d2922; background-image: url('/images/page-background.jpg'); background-repeat: no-repeat; background-position: top center; background-size: cover;"
   >
-    <!-- NAVBAR -->
-    <NavBar />
-
     <!-- FLOATING BACKGROUND PARTICLES (Bedtime Stars or Daytime Bubbles) -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden z-0">
       <template v-if="isBedtimeMode">
@@ -43,61 +36,62 @@
       </template>
     </div>
 
-    <main class="relative z-10">
-      <!-- HERO SLIDER SECTION -->
-      <section class="w-full overflow-hidden shadow-lg">
-        <HeroSlider
-          :slides="heroSlides"
-          :activeIndex="heroIndex"
-          @prev="prevHero"
-          @next="nextHero"
-          @change="heroIndex = $event"
-          @pause="pauseHeroSlide"
-          @resume="startHeroSlide"
-        />
-      </section>
+    <!-- MAIN STORYBOOK WHITE CANVAS CARD (KIDSLATA STYLE - EXACTLY MATCHING MOCKUP) -->
+    <div
+      class="relative z-10 max-w-[1180px] mx-auto bg-white/95 backdrop-blur-md rounded-[2.5rem] p-3 sm:p-5 md:p-6 shadow-[0_25px_60px_rgba(0,0,0,0.22)] border-4 border-white/80 my-4 sm:my-6"
+    >
+      <!-- NAVBAR -->
+      <NavBar />
 
-      <!-- INTERACTIVE CONTROL BAR (Search + Surprise + Bedtime + Sound) -->
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20">
+      <!-- DYNAMIC TOP CUSTOM SECTIONS (FROM ADMIN) -->
+      <template v-for="section in topCustomSections" :key="section.id">
         <div
-          class="rounded-3xl p-3 sm:p-4 shadow-xl border-2 backdrop-blur-xl transition-all duration-300"
-          :class="isBedtimeMode
-            ? 'bg-indigo-900/80 border-indigo-700/60 shadow-[0_15px_35px_rgba(0,0,0,0.5)]'
-            : 'bg-white/90 border-white shadow-[0_15px_35px_rgba(168,85,247,0.15)]'"
+          v-if="section.enabled && section.customHtml"
+          :class="section.layout === 'boxed' ? 'max-w-[1180px] mx-auto px-2 sm:px-4 my-3' : 'w-full my-3'"
         >
-          <div class="flex flex-col lg:flex-row items-center justify-between gap-3 sm:gap-4">
-            <!-- SEARCH INPUT -->
-            <div class="relative w-full lg:w-96">
-              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-xl select-none">
-                🔍
-              </span>
-              <input
-                v-model="searchQuery"
-                type="text"
-                placeholder="Search dragons, space, lions..."
-                class="w-full rounded-full pl-12 pr-10 py-3 text-sm sm:text-base font-semibold focus:outline-none focus:ring-4 transition-all"
-                :class="isBedtimeMode
-                  ? 'bg-indigo-950/80 text-white placeholder-indigo-300 border border-indigo-700 focus:ring-purple-500'
-                  : 'bg-pink-50/80 text-gray-800 placeholder-gray-400 border border-pink-100 focus:ring-pink-300'"
-              />
-              <button
-                v-if="searchQuery"
-                @click="searchQuery = ''"
-                class="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 rounded-full bg-gray-200 hover:bg-gray-300 text-xs text-gray-700 flex items-center justify-center font-bold"
-              >
-                ✕
-              </button>
-            </div>
+          <div v-html="section.customHtml"></div>
+        </div>
+      </template>
 
-            <!-- AGE FILTER PILLS -->
-            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full pb-1 lg:pb-0 scrollbar-none">
+      <main class="relative z-10">
+        <!-- HERO SLIDER SECTION (KIDSLATA MAGIC NIGHT SKY STYLE) -->
+        <section class="w-full mt-2 sm:mt-3">
+          <HeroSlider
+            :slides="heroSlides"
+            :activeIndex="heroIndex"
+            @prev="prevHero"
+            @next="nextHero"
+            @change="heroIndex = $event"
+            @pause="pauseHeroSlide"
+            @resume="startHeroSlide"
+            @search="searchQuery = $event"
+          />
+        </section>
+
+        <!-- EXPLORE BY CATEGORIES (6 CIRCULAR BUBBLES - KIDSLATA STYLE) -->
+        <Catergory
+          :activeCategory="selectedCategory"
+          :soundEnabled="isSoundOn"
+          @select="handleSelectCategory"
+        />
+
+        <!-- INTERACTIVE CONTROL BAR (Surprise Me + Bedtime + Sound) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 relative z-20">
+          <div
+            class="rounded-full px-4 py-2.5 shadow-md border-2 backdrop-blur-xl transition-all duration-300 flex items-center justify-between gap-3 flex-wrap"
+            :class="isBedtimeMode
+              ? 'bg-indigo-900/80 border-indigo-700/60 shadow-[0_10px_25px_rgba(0,0,0,0.5)]'
+              : 'bg-white/90 border-purple-100 shadow-[0_8px_20px_rgba(168,85,247,0.1)]'"
+          >
+            <!-- QUICK AGE FILTERS -->
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none">
               <button
                 v-for="age in ageFilters"
                 :key="age.id"
                 @click="setAgeFilter(age.id)"
-                class="rounded-full px-3.5 py-2 text-xs sm:text-sm font-black transition-all shrink-0 select-none"
+                class="rounded-full px-3 py-1 text-xs sm:text-sm font-bold font-kids transition-all shrink-0 select-none"
                 :class="selectedAge === age.id
-                  ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md scale-105'
+                  ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-sm scale-105'
                   : isBedtimeMode
                     ? 'bg-indigo-950/60 text-indigo-200 hover:bg-indigo-950'
                     : 'bg-purple-50 text-purple-700 hover:bg-purple-100'"
@@ -106,181 +100,180 @@
               </button>
             </div>
 
-            <!-- INTERACTIVE ACTION BUTTONS -->
-            <div class="flex items-center gap-2 sm:gap-3 w-full lg:w-auto justify-end">
+            <!-- ACTIONS: SURPRISE ME + BEDTIME + SOUND -->
+            <div class="flex items-center gap-2">
               <!-- SURPRISE ME BUTTON -->
               <button
                 @click="handleSurpriseMe"
-                class="flex-1 lg:flex-none inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 px-4 py-2.5 text-xs sm:text-sm font-black text-white shadow-md hover:scale-105 active:scale-95 transition-all select-none"
+                class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 px-3.5 py-1.5 text-xs sm:text-sm font-bold font-kids text-white shadow-sm hover:scale-105 active:scale-95 transition-all select-none"
               >
                 <span>Surprise Me!</span>
-                <span class="text-base animate-bounce">🎲</span>
+                <span class="text-sm">🎲</span>
               </button>
 
               <!-- BEDTIME MODE TOGGLE -->
               <button
                 @click="toggleBedtimeMode"
                 :title="isBedtimeMode ? 'Switch to Daylight Mode' : 'Switch to Cozy Bedtime Mode'"
-                class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-full shadow-md transition-all hover:scale-110 active:scale-95 select-none"
+                class="inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full shadow-sm transition-all hover:scale-110 active:scale-95 select-none"
                 :class="isBedtimeMode ? 'bg-amber-400 text-indigo-950' : 'bg-indigo-950 text-yellow-300'"
               >
-                <span class="text-lg">{{ isBedtimeMode ? '☀️' : '🌙' }}</span>
+                <span class="text-sm">{{ isBedtimeMode ? '☀️' : '🌙' }}</span>
               </button>
 
               <!-- SOUND TOGGLE -->
               <button
                 @click="toggleSound"
                 :title="isSoundOn ? 'Mute Sounds' : 'Turn Sounds On'"
-                class="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-full shadow-md transition-all hover:scale-110 active:scale-95 select-none"
+                class="inline-flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-full shadow-sm transition-all hover:scale-110 active:scale-95 select-none"
                 :class="isSoundOn
                   ? (isBedtimeMode ? 'bg-purple-600 text-white' : 'bg-pink-500 text-white')
                   : (isBedtimeMode ? 'bg-indigo-950 text-indigo-400' : 'bg-gray-100 text-gray-500')"
               >
-                <span class="text-base">{{ isSoundOn ? '🔊' : '🔇' }}</span>
+                <span class="text-sm">{{ isSoundOn ? '🔊' : '🔇' }}</span>
               </button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CATEGORY BUBBLES -->
-      <Catergory
-        :activeCategory="selectedCategory"
-        :soundEnabled="isSoundOn"
-        @select="handleSelectCategory"
-      />
+        <!-- LOADING STATE (Cute Skeleton) -->
+        <StorySkeleton v-if="pending" />
 
-      <!-- LOADING STATE (Cute Skeleton) -->
-      <StorySkeleton v-if="pending" />
-
-      <!-- FILTERED SEARCH RESULTS VIEW -->
-      <section
-        v-else-if="searchQuery || selectedCategory !== 'all' || selectedAge !== 'all'"
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
-      >
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
-          <div>
-            <div class="inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-3 py-1 text-xs font-extrabold font-kids text-purple-700 mb-2 border border-purple-200">
-              <span>🎯 Custom Exploration</span>
+        <!-- FILTERED SEARCH RESULTS VIEW -->
+        <section
+          v-else-if="searchQuery || selectedCategory !== 'all' || selectedAge !== 'all'"
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+        >
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
+            <div>
+              <div class="inline-flex items-center gap-1.5 rounded-full bg-purple-100 px-3 py-1 text-xs font-extrabold font-kids text-purple-700 mb-2 border border-purple-200">
+                <span>🎯 Custom Exploration</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold font-baloo text-purple-950 tracking-tight" :class="{ 'text-white': isBedtimeMode }">
+                Found {{ filteredStories.length }} Story Adventure{{ filteredStories.length === 1 ? '' : 's' }}
+              </h2>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold font-baloo text-purple-950 tracking-tight" :class="{ 'text-white': isBedtimeMode }">
-              Found {{ filteredStories.length }} Story Adventure{{ filteredStories.length === 1 ? '' : 's' }}
-            </h2>
+
+            <!-- RESET FILTER BUTTON -->
+            <button
+              @click="resetFilters"
+              class="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-bold font-kids text-pink-600 shadow-sm border border-pink-200 hover:bg-pink-50 hover:scale-105 active:scale-95 transition"
+            >
+              <span>Reset All Filters</span>
+              <span>✕</span>
+            </button>
           </div>
 
-          <!-- RESET FILTER BUTTON -->
-          <button
-            @click="resetFilters"
-            class="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-bold font-kids text-pink-600 shadow-sm border border-pink-200 hover:bg-pink-50 hover:scale-105 active:scale-95 transition"
+          <!-- NO RESULTS FOUND -->
+          <div
+            v-if="filteredStories.length === 0"
+            class="rounded-3xl bg-white/70 backdrop-blur-md p-10 text-center shadow-lg border border-purple-100 max-w-lg mx-auto"
           >
-            <span>Reset All Filters</span>
-            <span>✕</span>
-          </button>
-        </div>
-
-        <!-- NO RESULTS FOUND -->
-        <div
-          v-if="filteredStories.length === 0"
-          class="rounded-3xl bg-white/70 backdrop-blur-md p-10 text-center shadow-lg border border-purple-100 max-w-lg mx-auto"
-        >
-          <div class="text-5xl mb-3">
-            🔍 🦄
-          </div>
-          <h3 class="text-xl font-black text-purple-800">
-            No magical tales found!
-          </h3>
-          <p class="text-sm font-medium text-gray-600 mt-1 mb-5">
-            Try searching for something else like "lion", "stars", or "bedtime".
-          </p>
-          <button
-            @click="resetFilters"
-            class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2.5 text-sm font-bold text-white shadow-md hover:scale-105 transition"
-          >
-            <span>Show All Stories</span>
-            <span>🌈</span>
-          </button>
-        </div>
-
-        <!-- RESULTS GRID -->
-        <div
-          v-else
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"
-        >
-          <StoryCard
-            v-for="story in filteredStories"
-            :key="story.id"
-            :story="story"
-          />
-        </div>
-      </section>
-
-      <!-- DEFAULT STORYFLIX NETFLIX-STYLE CURATED VIEW -->
-      <template v-else>
-        <!-- ROW 1: TRENDING & POPULAR STORIES -->
-        <StoryRail
-          title="🔥 Popular & Trending Stories"
-          subtitle="The most-read adventures kids are loving right now!"
-          badge="HOT PICKS"
-          badgeColor="bg-rose-100 text-rose-700"
-          :stories="trendingStories"
-        />
-
-        <!-- SPOTLIGHT BOOK OF THE DAY -->
-        <SpotlightStory :story="spotlightStory" />
-
-        <!-- ROW 2: COZY BEDTIME STORIES -->
-        <StoryRail
-          title="🌙 Cozy Bedtime Tales"
-          subtitle="Gentle, soothing stories designed to inspire sweet dreams."
-          badge="SWEET DREAMS"
-          badgeColor="bg-indigo-100 text-indigo-700"
-          :stories="bedtimeStories"
-        />
-
-        <!-- ROW 3: MAGIC & SPACE ADVENTURES -->
-        <StoryRail
-          title="🚀 Magic & Space Quests"
-          subtitle="Explore secret forests, star kingdoms, and faraway galaxies!"
-          badge="ADVENTURE"
-          badgeColor="bg-cyan-100 text-cyan-700"
-          :stories="adventureStories"
-        />
-
-        <!-- FULL LIBRARY EXPLORER PREVIEW -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div class="text-center mb-8">
-            <CuteHeading text="⭐ Story Library" />
-            <p class="text-sm sm:text-base font-medium font-kids text-purple-700/80 mt-2 max-w-lg mx-auto" :class="{ 'text-purple-300': isBedtimeMode }">
-              Dive into our full bookshelf of illustrated stories, ready for storytime anytime!
+            <div class="text-5xl mb-3">
+              🔍 🦄
+            </div>
+            <h3 class="text-xl font-black text-purple-800">
+              No magical tales found!
+            </h3>
+            <p class="text-sm font-medium text-gray-600 mt-1 mb-5">
+              Try searching for something else like "lion", "stars", or "bedtime".
             </p>
+            <button
+              @click="resetFilters"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2.5 text-sm font-bold text-white shadow-md hover:scale-105 transition"
+            >
+              <span>Show All Stories</span>
+              <span>🌈</span>
+            </button>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+          <!-- RESULTS GRID -->
+          <div
+            v-else
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"
+          >
             <StoryCard
-              v-for="story in storiesList.slice(0, 10)"
+              v-for="story in filteredStories"
               :key="story.id"
               :story="story"
             />
           </div>
-
-          <!-- BROWSE ALL CTA -->
-          <div class="mt-10 text-center">
-            <NuxtLink
-              to="/all-stories"
-              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 px-8 py-4 text-base sm:text-lg font-black text-white shadow-xl hover:scale-105 active:scale-95 transition-all"
-            >
-              <span>Explore All Stories</span>
-              <span class="text-xl">📚</span>
-            </NuxtLink>
-          </div>
         </section>
-      </template>
 
-      <!-- TRUST & PARENT BENEFIT BADGES -->
-      <TrustBadges />
-    </main>
+        <!-- DEFAULT STORYFLIX CURATED VIEW (KIDSLATA SHOWCASE) -->
+        <template v-else>
+          <!-- SHOWCASE: FEATURED STORY + POPULAR STORIES (KIDSLATA STYLE) -->
+          <section class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 select-none">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-start">
+              <!-- LEFT: FEATURED STORY (ALL STORIES) -->
+              <div class="lg:col-span-4 bg-[#f0edfd]/90 backdrop-blur-md rounded-[2.5rem] p-5 sm:p-6 border-2 border-purple-100/90 shadow-[0_12px_28px_rgba(147,51,234,0.08)] flex flex-col justify-between">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-xl sm:text-2xl font-black font-baloo text-purple-950 flex items-center gap-1.5">
+                    <span>All Stories</span>
+                    <span class="text-lg">📚</span>
+                  </h3>
+                  <span class="rounded-full bg-emerald-100 text-emerald-900 px-3 py-0.5 text-xs font-bold font-kids border border-emerald-200">
+                    Age 3-5
+                  </span>
+                </div>
 
-    <!-- FOOTER -->
+                <!-- FEATURED 3D BOOK -->
+                <StoryCard
+                  :story="spotlightStory || storiesList[0]"
+                  featured
+                  darkButton
+                />
+              </div>
+
+              <!-- RIGHT: POPULAR STORIES (ALL MAGICAL BOOKS) -->
+              <div class="lg:col-span-8 bg-[#f0edfd]/90 backdrop-blur-md rounded-[2.5rem] p-5 sm:p-6 border-2 border-purple-100/90 shadow-[0_12px_28px_rgba(147,51,234,0.08)]">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="text-xl sm:text-2xl font-black font-baloo text-purple-950 flex items-center gap-1.5">
+                    <span>Popular Stories</span>
+                    <span class="text-xs font-bold font-kids text-purple-600 bg-purple-100 px-2.5 py-0.5 rounded-full ml-1">All Magical Books! 🧚</span>
+                  </h3>
+                  <NuxtLink
+                    to="/all-stories"
+                    class="text-xs sm:text-sm font-bold font-kids text-purple-700 hover:text-pink-600 transition-colors flex items-center gap-1"
+                  >
+                    <span>See All</span>
+                    <span>→</span>
+                  </NuxtLink>
+                </div>
+
+                <!-- 4 POPULAR 3D BOOKS -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4">
+                  <StoryCard
+                    v-for="story in trendingStories.slice(0, 4)"
+                    :key="story.id"
+                    :story="story"
+                    inGrid
+                    darkButton
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        </template>
+      </main>
+    </div>
+
+    <!-- FUN PLAY & AUDIOBOOKS (FLOATING ON ROLLING GREEN HILLS) -->
+    <div class="relative z-10 max-w-[1180px] mx-auto px-3 sm:px-4 my-6 sm:my-8">
+      <FunPlaySection />
+    </div>
+
+    <!-- DYNAMIC BOTTOM CUSTOM SECTIONS (FROM ADMIN) -->
+    <template v-for="section in bottomCustomSections" :key="section.id">
+      <div
+        v-if="section.enabled && section.customHtml"
+        :class="section.layout === 'boxed' ? 'relative z-10 max-w-[1180px] mx-auto px-3 sm:px-4 my-6 sm:my-8' : 'relative z-10 w-full px-4 my-6 sm:my-8'"
+      >
+        <div v-html="section.customHtml"></div>
+      </div>
+    </template>
+
+    <!-- SEAMLESS WOODLAND FOOTER (SITTING DIRECTLY ON LOWER MEADOW OF ARTWORK) -->
     <FooterPart />
 
     <!-- SURPRISE MODAL -->
@@ -300,6 +293,7 @@ import HeroSlider from "../components/HeroSlider.vue"
 import StoryCard from "../components/StoryCard.vue"
 import StoryRail from "../components/StoryRail.vue"
 import Catergory from "../components/Catergory.vue"
+import FunPlaySection from "../components/FunPlaySection.vue"
 import CuteHeading from "../components/CuteHeading.vue"
 import SpotlightStory from "../components/SpotlightStory.vue"
 import TrustBadges from "../components/TrustBadges.vue"
@@ -310,6 +304,17 @@ import NavBar from "../components/NavBar.vue"
 
 import { heroSlides } from "../data/storyData.js"
 import api from "../services/Api.js"
+import { useSiteCustomizerStore } from "../pinaGlobal/siteCustomizer"
+
+const customizer = useSiteCustomizerStore()
+
+const topCustomSections = computed(() => {
+  return (customizer.landingSections || []).filter((s) => s.enabled && s.position === "top")
+})
+
+const bottomCustomSections = computed(() => {
+  return (customizer.landingSections || []).filter((s) => s.enabled && s.position === "bottom")
+})
 
 // =====================================================
 // SEO & HEAD
@@ -514,6 +519,19 @@ const ageFilters = [
   { id: "8+", label: "🦁 Ages 8+" },
 ]
 
+// KidsLata-style Pill Category & Age Filters
+const quickPillCategories = [
+  { id: "bedtime", label: "Bedtime", icon: "🌙", colorClass: "bg-[#25335e] text-white border-blue-900/40 hover:bg-[#314175]", activeClass: "bg-[#182347] text-white" },
+  { id: "animals", label: "Animals", icon: "🦁", colorClass: "bg-[#fed882] text-amber-950 border-amber-300 hover:bg-[#ffdf94]", activeClass: "bg-amber-400 text-amber-950" },
+  { id: "fairy", label: "Fairy Tales", icon: "🧚", colorClass: "bg-[#bbf7d0] text-emerald-950 border-emerald-300 hover:bg-[#c9f9db]", activeClass: "bg-emerald-300 text-emerald-950" },
+  { id: "adventure", label: "Adventures", icon: "🚀", colorClass: "bg-[#ddd6fe] text-purple-950 border-purple-300 hover:bg-[#e6e0fe]", activeClass: "bg-purple-300 text-purple-950" },
+]
+
+const agePills = [
+  { id: "2-4", label: "Age 3-5", icon: "👶", colorClass: "bg-[#bae6fd] text-sky-950 border-sky-300 hover:bg-[#c7ecfe]", activeClass: "bg-sky-300 text-sky-950" },
+  { id: "5-7", label: "Age 6-8", icon: "🧒", colorClass: "bg-[#fbcfe8] text-pink-950 border-pink-300 hover:bg-[#fcd9ed]", activeClass: "bg-pink-300 text-pink-950" },
+]
+
 const handleSelectCategory = (catId) => {
   selectedCategory.value = catId
 }
@@ -608,6 +626,7 @@ const handleSurpriseMe = () => {
 // LIFECYCLE
 // =====================================================
 onMounted(() => {
+  customizer.loadFromStorage()
   startHeroSlide()
 })
 

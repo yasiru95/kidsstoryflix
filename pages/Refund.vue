@@ -1,6 +1,6 @@
 <template>
   <NavBar />
-  <div class="min-h-screen bg-gradient-to-b from-yellow-100 via-pink-100 to-blue-100 p-6">
+  <div class="min-h-screen bg-gradient-to-b from-yellow-100 via-pink-100 to-blue-100 p-6 pb-48 sm:pb-56">
 
     <div class="max-w-4xl mx-auto bg-white rounded-[2.5rem] shadow-2xl border-4 border-yellow-100 p-8">
 

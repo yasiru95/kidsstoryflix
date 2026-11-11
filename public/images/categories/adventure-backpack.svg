@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="pack-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="pack-orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+    <linearGradient id="compass-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="bp-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#047857" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#bp-shadow)">
+    <!-- BACKPACK REAR STRAPS -->
+    <path d="M42 28 C30 28 26 45 26 68 L32 68 C32 50 36 34 44 34 Z" fill="#D97706"/>
+    <path d="M78 28 C90 28 94 45 94 68 L88 68 C88 50 84 34 76 34 Z" fill="#D97706"/>
+    <rect x="52" y="22" width="16" height="8" rx="4" fill="#B45309"/>
+
+    <!-- MAIN BACKPACK BODY -->
+    <rect x="32" y="32" width="56" height="62" rx="14" fill="url(#pack-teal)"/>
+
+    <!-- TOP FLAP -->
+    <path d="M32 46 C32 34 42 30 60 30 C78 30 88 34 88 46 L88 56 C88 56 74 62 60 62 C46 62 32 56 32 56 Z" fill="url(#pack-orange)"/>
+
+    <!-- BUCKLES & STRAPS ON FLAP -->
+    <rect x="42" y="42" width="6" height="26" rx="2" fill="#78350F"/>
+    <rect x="41" y="60" width="8" height="6" rx="1.5" fill="#FDE047"/>
+    <rect x="72" y="42" width="6" height="26" rx="2" fill="#78350F"/>
+    <rect x="71" y="60" width="8" height="6" rx="1.5" fill="#FDE047"/>
+
+    <!-- FRONT POCKET -->
+    <rect x="40" y="66" width="40" height="24" rx="8" fill="url(#pack-orange)"/>
+    <rect x="56" y="74" width="8" height="4" rx="1" fill="#FDE047"/>
+
+    <!-- ROLLED SLEEPING MAT / MAP ATOP FLAP -->
+    <g transform="translate(30, 24)">
+      <rect x="6" y="2" width="48" height="12" rx="6" fill="#FDE68A" stroke="#D97706" stroke-width="1.5"/>
+      <ellipse cx="12" cy="8" rx="4" ry="5" fill="#F59E0B"/>
+      <!-- Straps around rolled map -->
+      <rect x="18" y="1" width="4" height="14" rx="1" fill="#EA580C"/>
+      <rect x="38" y="1" width="4" height="14" rx="1" fill="#EA580C"/>
+    </g>
+
+    <!-- SIDE POCKET WITH COMPASS / CANTEEN -->
+    <!-- Left pocket -->
+    <rect x="25" y="58" width="10" height="26" rx="4" fill="#047857"/>
+    <rect x="27" y="50" width="6" height="12" rx="3" fill="#38BDF8"/>
+
+    <!-- GOLDEN VINTAGE COMPASS HANGING ON RIGHT -->
+    <g transform="translate(82, 68)">
+      <circle cx="12" cy="12" r="11" fill="url(#compass-gold)"/>
+      <circle cx="12" cy="12" r="8.5" fill="#FFFFFF"/>
+      <!-- Compass dial arrow -->
+      <polygon points="12,5 15,12 12,10 9,12" fill="#EF4444"/>
+      <polygon points="12,19 15,12 12,14 9,12" fill="#3B82F6"/>
+      <circle cx="12" cy="12" r="1.5" fill="#1E293B"/>
+    </g>
+  </g>
+</svg>

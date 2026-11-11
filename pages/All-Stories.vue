@@ -1,4 +1,3 @@
-```vue
 <template>
   <NavBar />
 
@@ -10,6 +9,7 @@
       via-blue-100
       to-yellow-100
       p-6
+      pb-48 sm:pb-56
     "
   >
     <div class="max-w-7xl mx-auto">
@@ -118,4 +118,3 @@ const {
   }
 )
 </script>
-```

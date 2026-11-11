@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="hat-purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="60%" stop-color="#7E22CE"/>
+      <stop offset="100%" stop-color="#581C87"/>
+    </linearGradient>
+    <linearGradient id="hat-band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+    <linearGradient id="magic-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF587"/>
+      <stop offset="100%" stop-color="#FFB800"/>
+    </linearGradient>
+    <filter id="hat-shadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#581C87" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#hat-shadow)">
+    <!-- WIDE CURVED HAT BRIM -->
+    <ellipse cx="60" cy="90" rx="46" ry="14" fill="url(#hat-purple)"/>
+    <ellipse cx="60" cy="88" rx="42" ry="11" fill="#7E22CE"/>
+
+    <!-- CONE OF WIZARD HAT (CROOKED TOP) -->
+    <path d="M30 86 C34 55 45 35 70 20 C76 16 86 14 92 18 C96 22 92 28 86 32 C78 37 72 45 70 56 C68 68 76 78 88 86 Z" fill="url(#hat-purple)"/>
+
+    <!-- HAT RIBBON BAND -->
+    <path d="M32 84 C38 80 50 78 60 78 C70 78 82 80 88 84 L88 88 C82 84 70 82 60 82 C50 82 38 84 32 88 Z" fill="url(#hat-band)"/>
+
+    <!-- GOLDEN BUCKLE ON BAND -->
+    <rect x="54" y="77" width="12" height="10" rx="3" fill="url(#magic-gold)"/>
+    <rect x="57" y="80" width="6" height="4" rx="1" fill="#7E22CE"/>
+
+    <!-- FLOATING GOLD STARS ON HAT -->
+    <!-- Star 1 -->
+    <path d="M52 48 L53.5 43 L55 48 L60 49.5 L55 51 L53.5 56 L52 51 L47 49.5 Z" fill="url(#magic-gold)"/>
+    <!-- Star 2 -->
+    <path d="M68 34 L69.5 30 L71 34 L75 35.5 L71 37 L69.5 41 L68 37 L64 35.5 Z" fill="url(#magic-gold)"/>
+    <!-- Crescent Moon Patch -->
+    <path d="M46 64 C42 64 38 68 38 73 C38 78 42 82 46 82 C48 82 49 81 50 80 C46 79 43 76 43 73 C43 70 46 67 50 66 C49 65 48 64 46 64 Z" fill="url(#magic-gold)"/>
+
+    <!-- MAGIC PARTICLES / SPARKLES BURSTING AROUND HAT -->
+    <path d="M22 60 L24 53 L26 60 L33 62 L26 64 L24 71 L22 64 L15 62 Z" fill="#FDE047"/>
+    <path d="M96 50 L97.5 44 L99 50 L105 51.5 L99 53 L97.5 59 L96 53 L90 51.5 Z" fill="#F472B6"/>
+    <circle cx="94" cy="22" r="3" fill="#FDE047"/>
+    <circle cx="28" cy="40" r="2" fill="#FFFFFF"/>
+    <circle cx="82" cy="70" r="2.5" fill="#C084FC"/>
+  </g>
+</svg>

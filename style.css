@@ -6,12 +6,17 @@
    GLOBAL KIDS THEME
 ========================= */
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   font-family: "Fredoka", "Baloo 2", cursive, sans-serif;
-  background: linear-gradient(180deg, #fff0f6, #e0f7ff, #fffde7);
+  background-color: #0d2922;
   color: #333;
 }
 
